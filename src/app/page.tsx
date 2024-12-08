@@ -23,9 +23,7 @@ export default function Home() {
       
 
 {/* Page Content */}
-      <main className="min-h-screen bg-gray-100">
-        {/* Add your main content here */}
-      </main>
+      
     </div>
   );      
 }

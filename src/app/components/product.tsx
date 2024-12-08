@@ -66,8 +66,8 @@ const Product = () => {
   return (
     <>
       <section>
-        <div className='px-8 py-12 text-[#2A254B] mt-12 bg-white'>
-          <h1 className='text-2xl'>Our popular products</h1>
+        <div className='px-8 py-12 text-[#2A254B] mt-12 bg-white ml-36'>
+          <h1 className='text-3xl'>Our popular products</h1>
 
           {/* Flexbox layout: stack on small screens, side by side on medium and large screens */}
           <div className='flex flex-col md:flex-row gap-8 mt-8'>
@@ -75,7 +75,7 @@ const Product = () => {
             {/* Product 1 */}
             <div className='w-full md:w-[700px] h-auto'>
               <Image
-                src={'/images/large.png'}
+                src={'/images/Large.png'}
                 height={800}
                 width={800}
                 alt='sofa'
