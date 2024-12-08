@@ -1,42 +1,105 @@
 
-import React from 'react';
-import Card from './card';
 
-const ListingComponent: React.FC = () => {
+
+
+
+import Image from 'next/image'
+import React from 'react'
+
+const Ceramics = () => {
   return (
-    <section className="w-full h-auto bg-white flex flex-col items-center p-6">
-      <h3 className="text-left md:text-center text-[32px] font-normal font-[Clash Display] text-[#2A254B] mb-6 w-full pl-72 ">
-        New Ceramics
-      </h3>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 justify-items-center items-center mb-6">
-        <Card
-          imageSrc="/images/Parent (3).png"
-          title="The Dandy Chair"
-          subtitle="£250"
-        />
-        <Card
-          imageSrc="/images/Parent.png"
-          title="Rusic Vase Set"
-          subtitle="£155"
-        />
-        <Card
-          imageSrc="/images/Parent (1).png"
-          title="The Silky Vase"
-          subtitle="£125"
-        />
-        <Card
-          imageSrc="/images/fan.png"
-          title="The Lucy Lamp"
-          subtitle="£399"
-        />
-      </div>
-      <button
-        className="w-[170px] h-[56px] bg-[#4e4d93] text-[#F9F9F9] font-medium text-[16px] flex items-center justify-center rounded-md shadow-lg hover:bg-[#3d3b7a] transition duration-300"
-      >
-        View Collection
-      </button>
-    </section>
-  );
-};
+    <>
+      <section>
+        <div className="px-4 md:px-8 py-12 text-[#2A254B] mt-12 bg-white">
+          {/* Title */}
+          <h1 className="text-2xl font-semibold">New Ceramics</h1>
 
-export default ListingComponent;
+          {/* Product Items */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-12">
+            {/* Product 1 */}
+            <div className="w-full h-auto">
+              <Image
+                src={'/images/Parent (3).png'}
+                height={700}
+                width={700}
+                alt="chair"
+                className="w-full h-[80%] object-cover"
+              />
+              <div className="mt-4 text-[#2A254B]">
+                <p className="py-2">The Dendy Chair</p>
+                <p>$250</p>
+              </div>
+            </div>
+
+            {/* Product 2 */}
+            <div className="w-full h-auto">
+              <Image
+                src={'/images/Parent.png'}
+                height={700}
+                width={700}
+                alt="vase"
+                className="w-full h-[80%] object-cover"
+              />
+              <div className="mt-4 text-[#2A254B]">
+                <p className="py-2">Rustic VaseSet</p>
+                <p>$155</p>
+              </div>
+            </div>
+
+            {/* Product 3 */}
+            <div className="w-full h-auto">
+              <Image
+                src={'/images/Parent (1).png'}
+                height={700}
+                width={700}
+                alt="silky vase"
+                className="w-full h-[80%] object-cover"
+              />
+              <div className="mt-4 text-[#2A254B]">
+                <p className="py-2">The Silky Vase</p>
+                <p>$125</p>
+              </div>
+            </div>
+
+            {/* Product 4 */}
+            <div className="w-full h-auto">
+              <Image
+                src={'/images/fan.png'}
+                height={700}
+                width={700}
+                alt="lamp"
+                className="w-full h-[80%] object-cover"
+              />
+              <div className="mt-4 text-[#2A254B]">
+                <p className="py-2">The Lucky Lamp</p>
+                <p>$399</p>
+              </div>
+            </div>
+          </div>
+
+          {/* View Collection Button */}
+          <div className="my-10 flex justify-center items-center">
+            <button className="bg-[#F9F9F9] py-4 px-6 rounded-[5px] text-[#2A254B]">
+              View collection
+            </button>
+          </div>
+        </div>
+      </section>
+    </>
+  )
+}
+
+export default Ceramics;
+
+
+
+
+
+
+
+
+
+
+
+
+
