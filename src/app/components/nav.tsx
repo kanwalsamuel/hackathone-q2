@@ -59,7 +59,7 @@ export default function TopNav() {
       {/* Bottom Section: Navigation Links for Small Screens */}
       {menuOpen && (
         <div className="w-full sm:hidden flex flex-col items-center space-y-4 py-4 bg-white shadow-lg z-10">
-          {["Plant Pots", "Ceramics", "Tables", "Chairs", "Crockery", "Tableware", "Cutlery", "About"].map(
+          {["Plant Pots", "Ceramics", "Tables", "Chairs", "Crockery", "Tableware", "Cutlery", "About","Cart"].map(
             (link, index) => (
               <Link
                 key={index}
@@ -76,7 +76,7 @@ export default function TopNav() {
 
       {/* Bottom Section: Navigation Links for Large Screens */}
       <div className="w-full hidden sm:flex justify-center space-x-6 sm:space-x-8 mt-4 sm:mt-auto py-4 sm:h-[50px]">
-        {["Plant Pots", "Ceramics", "Tables", "Chairs", "Crockery", "Tableware", "Cutlery", "About"].map(
+        {["Plant Pots", "Ceramics", "Tables", "Chairs", "Crockery", "Tableware", "Cutlery", "About" ,"Cart"].map(
           (link, index) => (
             <Link
               key={index}
