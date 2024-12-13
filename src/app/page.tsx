@@ -1,7 +1,7 @@
 // pages/index.tsx
+
 import Features from "./components/feature";
-import FeaturesSection from "./components/featureBlock";
-import Footer from "./components/footer";
+import FeaturesSection from "./components/featureBlock"
 import HeroSection from "./components/hero";
 import ListingComponent from "./components/listing";
 import TopNav from "./components/nav";
@@ -11,15 +11,16 @@ export default function Home() {
   return (
     <div>
       {/* Top Navigation Bar */}
-      <TopNav />
+      <TopNav/>
       <HeroSection/>
       <FeaturesSection/>
       <ListingComponent/>
       <Products/>
       <Features/>
-      <Footer/>
+      
+  
 
-      {/* Hero Section with Clash Display font */}
+      {/* Hero Section with Clash Display font */} 
       
 
 {/* Page Content */}

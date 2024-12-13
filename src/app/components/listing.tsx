@@ -90,16 +90,3 @@ const Ceramics = () => {
 }
 
 export default Ceramics;
-
-
-
-
-
-
-
-
-
-
-
-
-

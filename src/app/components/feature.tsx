@@ -1,12 +1,18 @@
+
+
+
+
+
 import Image from 'next/image'
 import React from 'react'
 
 const Touch = () => {
   return (
     <>
-      <section>
-        <div className='py-12 bg-white text-[#2A254B] mt-12 '>
-          <div className='flex flex-col md:flex-row'>
+      <section className="flex justify-center items-center min-h-screen bg-white">
+        <div className='py-12 text-[#2A254B] w-full max-w-7xl px-4 md:px-12'>
+          <div className='flex flex-col md:flex-row justify-center items-center'>
+            {/* Text Content */}
             <div className='w-full md:w-[720px] h-auto px-4 md:px-12 py-8 flex flex-col justify-between'>
               <div>
                 <h1 className='text-2xl md:text-2xl'>
@@ -26,6 +32,7 @@ const Touch = () => {
               </div>
             </div>
 
+            {/* Image */}
             <div className='w-full md:w-[890px] h-auto'>
               <Image
                 src={'/images/Image (4).png'}
