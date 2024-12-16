@@ -1,15 +1,21 @@
 
 
+
+
+
 'use client'
 import Image from 'next/image'
 import React from 'react'
 import { useRouter } from 'next/navigation';
 
 const Product = () => {
+  // Initialize the router
   const router = useRouter();
 
+  // Handle navigation on button click
   const handleNavigation = () => {
-    router.push('/productlisting'); // Navigates to the "/productlisting" page
+    // Replace with the URL you want to navigate to
+    router.push('/products');  // For example, navigate to a "/products" page
   };
 
   return (
@@ -70,7 +76,10 @@ const Product = () => {
 
           {/* View Collection Button */}
           <div className='my-10 flex justify-center items-center'>
-            <button className='bg-[#F9F9F9] py-4 px-6 rounded-[5px] text-[#2A254B]' onClick={handleNavigation}>
+            <button
+              className='bg-[#F9F9F9] py-4 px-6 rounded-[5px] text-[#2A254B]'
+              onClick={handleNavigation}
+            >
               View products
             </button>
           </div>

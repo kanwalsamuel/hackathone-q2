@@ -2,7 +2,7 @@
 
 import Features from "./components/feature";
 import FeaturesSection from "./components/featureBlock"
-import HeroSection from "./components/hero";
+import Hero from "./components/hero";
 import ListingComponent from "./components/listing";
 import TopNav from "./components/nav";
 import Products from "./components/product";
@@ -12,7 +12,8 @@ export default function Home() {
     <div>
       {/* Top Navigation Bar */}
       <TopNav/>
-      <HeroSection/>
+      <Hero/>
+      
       <FeaturesSection/>
       <ListingComponent/>
       <Products/>

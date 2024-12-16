@@ -47,9 +47,9 @@ export default function TopNav() {
         </div>
 
         {/* Hamburger Icon for Small Screens */}
-        <div className="flex items-center sm:hidden">
+        <div className="flex items-center sm:hidden absolute left-4">
           <FaBars
-            className="text-[#22202E] cursor-pointer"
+            className="text-[#22202E] cursor-pointer border border-[#22202E] p-2 rounded-lg"
             size={24}
             onClick={toggleMenu}
           />
@@ -58,13 +58,13 @@ export default function TopNav() {
 
       {/* Bottom Section: Navigation Links for Small Screens */}
       {menuOpen && (
-        <div className="w-full sm:hidden flex flex-col items-center space-y-4 py-4 bg-white shadow-lg z-10">
-          {["Plant Pots", "Ceramics", "Tables", "Chairs", "Crockery", "Tableware", "Cutlery", "About","Cart"].map(
+        <div className="w-full sm:hidden flex flex-col items-start space-y-4 py-4 bg-white shadow-lg z-10 border-t border-gray-400 ">
+          {["Plant Pots", "Ceramics", "Tables", "Chairs", "Crockery", "Tableware", "Cutlery", "About", "Cart","Products"].map(
             (link, index) => (
               <Link
                 key={index}
                 href={`/${link.replace(/\s+/g, "-").toLowerCase()}`}
-                className="text-[#726E8D] text-[14px] sm:text-[16px] font-[Satoshi] hover:text-black transition-colors"
+                className="text-[#726E8D] text-[14px] sm:text-[16px] font-[Satoshi] hover:text-black transition-colors px-4 py-2 w-full text-left"
                 onClick={() => setMenuOpen(false)} // Close menu after link click
               >
                 {link}
@@ -75,8 +75,8 @@ export default function TopNav() {
       )}
 
       {/* Bottom Section: Navigation Links for Large Screens */}
-      <div className="w-full hidden sm:flex justify-center space-x-6 sm:space-x-8 mt-4 sm:mt-auto py-4 sm:h-[50px]">
-        {["Plant Pots", "Ceramics", "Tables", "Chairs", "Crockery", "Tableware", "Cutlery", "About" ,"Cart"].map(
+      <div className="w-full hidden sm:flex flex-wrap justify-center space-x-6 sm:space-x-8 mt-4 sm:mt-auto py-4 sm:h-[50px] ">
+        {["Plant Pots", "Ceramics", "Tables", "Chairs", "Crockery", "Tableware", "Cutlery", "About", "Cart","Products"].map(
           (link, index) => (
             <Link
               key={index}

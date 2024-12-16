@@ -83,6 +83,7 @@ const Ceramics = () => {
               View collection
             </button>
           </div>
+          
         </div>
       </section>
     </>
