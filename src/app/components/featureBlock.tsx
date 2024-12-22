@@ -7,7 +7,7 @@ const features = [
   {
     icon: <FaTruck className="text-xl md:text-2xl lg:text-3xl text-gray-700" />,
     title: "Fast delivery",
-    description: "We ensure your products arrive quickly and safely.",
+    description: "We ensure your products arrive quickly and safely .",
   },
   {
     icon: <FaRegCheckCircle className="text-xl md:text-2xl lg:text-3xl text-gray-700" />,

@@ -136,18 +136,23 @@ const Products = () => {
         </div>
       </div>
 
+   
+
+
+
       {/* Products Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-1 gap-6 gap-y-2 bg-white mx-auto mb-6">
-        {/* Render multiple ProductListing components */}
-        {Array(4).fill(null).map((_, index) => (
-          <div
-            key={index}
-            className="w-full flex justify-center items-start mb-3 transition-all duration-200 ease-in-out hover:scale-105"
-          >
-            <ProductListing />
-          </div>
-        ))}
-      </div>
+<div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-1 gap-6 bg-white mx-auto mb-6">
+  {/* Render multiple ProductListing components */}
+  {Array.from({ length: 4 }).map((_, index) => (
+    <div
+      key={index}
+      className="w-full flex justify-center items-start mt-16 transition-transform duration-200 ease-in-out hover:scale-105"
+    >
+      <ProductListing />
+    </div>
+  ))}
+</div>
+
 
       {/* View Products Button */}
       <div className="my-10 flex justify-center">

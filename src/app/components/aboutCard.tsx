@@ -27,8 +27,8 @@ const Product = () => {
                 className='w-full h-[80%] object-cover'
               />
               <div className="p-4">
-                <p className="text-lg font-semibold text-[#2A254B]">The Dandy chair</p>
-                <p className="text-xl font-bold text-[#2A254B]">$250</p>
+                <p className="text-lg  text-[#2A254B]">The Dandy chair</p>
+                <p className="text-lg text-[#2A254B]">$250</p>
               </div>
             </div>
 
@@ -42,8 +42,8 @@ const Product = () => {
                 className='w-full h-[80%] object-cover'
               />
               <div className="p-4">
-                <p className="text-lg font-semibold text-[#2A254B]">The Grey Vase</p>
-                <p className="text-xl font-bold text-[#2A254B]">$250</p>
+                <p className="text-lg  text-[#2A254B]">The Grey Vase</p>
+                <p className="text-lg text-[#2A254B]">$250</p>
               </div>
             </div>
 
@@ -57,8 +57,8 @@ const Product = () => {
                 className='w-full h-[80%] object-cover'
               />
               <div className="p-4">
-                <p className="text-lg font-semibold text-[#2A254B]">The Dandy chair</p>
-                <p className="text-xl font-bold text-[#2A254B]">$250</p>
+                <p className="text-lg  text-[#2A254B]">The Dandy chair</p>
+                <p className="text-lg  text-[#2A254B]">$250</p>
               </div>
             </div>
 
@@ -72,8 +72,8 @@ const Product = () => {
                 className='w-full h-[80%] object-cover'
               />
               <div className="p-4">
-                <p className="text-lg font-semibold text-[#2A254B]">The Dandy chair</p>
-                <p className="text-xl font-bold text-[#2A254B]">$250</p>
+                <p className="text-lg  text-[#2A254B]">The Dandy chair</p>
+                <p className="text-lg text-[#2A254B] mb-4">$250</p>
               </div>
             </div>
           </div>
