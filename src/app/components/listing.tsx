@@ -17,31 +17,31 @@ const Ceramics = () => {
           {/* Product Items */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-2 mt-4">
             {/* Product 1 */}
-            <div className="w-full h-auto">
+            <div className="w-full h-auto mb-9">
               <Image
                 src={'/images/Parent (3).png'}
                 height={700}
                 width={700}
                 alt="chair"
-                className="w-full h-[80%] object-cover"
+                className="w-full h-[85%] object-cover"
               />
               <div className="mt-4 text-[#2A254B]">
-                <p className="py-2">The Dendy Chair</p>
+                <p className="py-2 mt-4">The Dendy Chair</p>
                 <p>$250</p>
               </div>
             </div>
 
             {/* Product 2 */}
-            <div className="w-full h-auto">
+            <div className="w-full h-auto mb-9">
               <Image
                 src={'/images/Parent.png'}
                 height={700}
                 width={700}
                 alt="vase"
-                className="w-full h-[80%] object-cover"
+                 className="w-full h-[85%] object-cover"
               />
               <div className="mt-4 text-[#2A254B]">
-                <p className="py-2">Rustic VaseSet</p>
+                <p className="py-2 ">Rustic VaseSet</p>
                 <p>$155</p>
               </div>
             </div>
@@ -56,7 +56,7 @@ const Ceramics = () => {
                 className="w-full h-[80%] object-cover"
               />
               <div className="mt-4 text-[#2A254B]">
-                <p className="py-2 mt-4">The Silky Vase</p>
+                <p className="py-2 ">The Silky Vase</p>
                 <p>$125</p>
               </div>
             </div>
