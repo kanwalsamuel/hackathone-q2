@@ -123,10 +123,11 @@ import Image from "next/image";
 const Hero = () => {
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-50 px-4 lg:px-8">
-      <div className="relative mt-8 mx-auto w-full max-w-[1180px] h-auto lg:my-[4rem] bg-[#4E4D93] flex flex-col md:flex-row lg:gap-[2rem] gap-[2rem]">
+      <div className="relative mt-8 mx-auto w-full max-w-[1180px] h-auto lg:my-[4rem] bg-[#2A254B]
+ flex flex-col md:flex-row lg:gap-[2rem] gap-[2rem]">
         {/* Text Section */}
-        <div className="z-10 flex-1 px-6 lg:px-[5rem] py-10 lg:py-[5rem]">
-          <h2 className="font-clash text-white text-3xl lg:text-4xl font-semibold leading-[44.8px]">
+        <div className="z-10 flex-1 px-6 lg:px-[5rem] py-10 lg:py-[5rem] ">
+          <h2 className=" text-white text-3xl lg:text-4xl font-semibold leading-[44.8px]">
             The furniture brand for the future, with timeless designs
           </h2>
           <p className="mt-8 leading-[27px] text-white text-lg">
