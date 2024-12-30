@@ -114,13 +114,13 @@ const Products = () => {
       {/* Header Section */}
       <div className="w-full h-[223px] mb-6">
         <TopNav />
-        <h1 className="text-center pt-5 text-2xl text-[#2a254b]  font-bold mt-26 ">
+        <h1 className="text-center  text-2xl text-[#2a254b]  font-bold mt-24 font-clash ">
           View All Products
         </h1>
       </div>
 
       {/* Filter Section */}
-      <div className="flex flex-wrap justify-between items-center w-full max-w-[1280px] mx-auto px-4 text-sm text-[#2a2548] mt-60 gap-4">
+      <div className="flex flex-wrap justify-between items-center w-full max-w-[1280px] mx-auto px-4 text-sm text-[#2a2548] mt-32 gap-4">
         {["Category", "Product", "Price", "Brand"].map((filter) => (
           <div
             key={filter}
@@ -135,6 +135,9 @@ const Products = () => {
           <span className="text-xs">↑</span>
         </div>
       </div>
+
+
+      
 
    
 

@@ -14,7 +14,7 @@ const ShoppingCart: React.FC = () => {
 
       {/* Main Content */}
       <div className="flex-grow flex flex-col items-center px-4 py-8 mt-24">
-        <h1 className="text-3xl font-bold text-center mb-28 text-[#2A254B] ">
+        <h1 className="text-3xl font-bold text-center mb-28 text-[#2A254B] font-clash">
           Your Shopping Cart
         </h1>
         <div className="w-full max-w-6xl grid grid-cols-1 lg:grid-cols-3 gap-8">

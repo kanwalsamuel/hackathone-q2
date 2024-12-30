@@ -127,15 +127,15 @@ const Hero = () => {
  flex flex-col md:flex-row lg:gap-[2rem] gap-[2rem]">
         {/* Text Section */}
         <div className="z-10 flex-1 px-6 lg:px-[5rem] py-10 lg:py-[5rem] ">
-          <h2 className=" text-white text-3xl lg:text-4xl font-semibold leading-[44.8px]">
+          <h2 className=" text-white text-3xl lg:text-4xl leading-[44.8px] font-clash">
             The furniture brand for the future, with timeless designs
           </h2>
-          <p className="mt-8 leading-[27px] text-white text-lg">
+          <p className="mt-8 leading-[27px] text-white text-lg font-satoshi">
             A new era in eco-friendly furniture with Avelon, the French luxury
             retail brand with nice fonts, tasteful colors, and a beautiful way to
             display things digitally using modern web technologies.
           </p>
-          <button className="mt-10 py-[16px] px-[32px] bg-[#f9f9f9] bg-opacity-[15%] leading-6 text-white font-satoshi font-normal hover:bg-lightGray hover:text-darkBlue transition-all duration-300 ease-in-out">
+          <button className="mt-10 py-[16px] px-[32px] bg-[#4E4D93] bg-opacity-[15%] leading-6 text-white font-satoshi font-normal hover:bg-lightGray hover:text-darkBlue transition-all duration-300 ease-in-out">
             View collection
           </button>
           {/* Image Section for Small Screens */}
