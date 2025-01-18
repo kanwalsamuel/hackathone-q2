@@ -22,7 +22,7 @@ const Product = () => {
     <>
       <section className="flex justify-center items-center min-h-screen bg-white">
         <div className='px-8 py-12 text-[#2A254B] mt-12 w-full max-w-7xl'>
-          <h1 className='text-3xl text-center'>Our popular products</h1>
+          <h1 className='text-3xl text-center font-clash'>Our popular products</h1>
 
           {/* Flexbox layout: stack on small screens, side by side on medium and large screens */}
           <div className='flex flex-col md:flex-row gap-8 mt-8 justify-center'>
@@ -77,7 +77,7 @@ const Product = () => {
           {/* View Collection Button */}
           <div className='my-10 flex justify-center items-center'>
             <button
-              className='bg-[#F9F9F9] py-4 px-6 rounded-[5px] text-[#2A254B]'
+              className='bg-[#F9F9F9] py-4 px-6 rounded-[5px] text-[#2A254B] font-satoshi'
               onClick={handleNavigation}
             >
               View products

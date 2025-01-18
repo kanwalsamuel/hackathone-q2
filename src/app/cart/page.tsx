@@ -1,84 +1,104 @@
 
 
+"use client";
 
-// components/ShoppingCart.tsx
-import React from "react";
-import Image from "next/image";
-import TopNav from "../components/nav";
+import React from 'react';
+import { useCart } from '../../context/cartContext';
+import Image from 'next/image';
+import TopNav from '../components/nav';
 
-const ShoppingCart: React.FC = () => {
-  return (
-    <div className="min-h-screen bg-gray-50 flex flex-col">
-      {/* Navigation */}
+const CartPage: React.FC = () => {
+  const { cartItems, removeFromCart, updateQuantity } = useCart();
+
+  const handleRemove = (productId: string) => {
+    removeFromCart(productId);
+  };
+
+  const handleQuantityChange = (productId: string, newQuantity: number) => {
+    updateQuantity(productId, newQuantity);
+  };
+
+  const subtotal = cartItems.reduce(
+    (total, item) => total + item.product.price * item.quantity,
+    0
+  );
+
+  const shipping = subtotal >= 500 ? 0 : 40;
+  const total = subtotal + shipping;
+
+  return ( 
+    <div className="cart-page min-h-screen bg-gray-50 ml-4">
       <TopNav />
-
-      {/* Main Content */}
-      <div className="flex-grow flex flex-col items-center px-4 py-8 mt-24">
-        <h1 className="text-3xl font-bold text-center mb-28 text-[#2A254B] font-clash">
-          Your Shopping Cart
-        </h1>
-        <div className="w-full max-w-6xl grid grid-cols-1 lg:grid-cols-3 gap-8">
-          {/* Left Section */}
-          <div className="lg:col-span-2 bg-white shadow-lg rounded-lg p-6">
-            <div className="space-y-4">
-              {/* Product 1 */}
-              <div className="flex items-center justify-between border-b pb-4">
-                <div className="flex items-center space-x-4">
-                  <Image
-                    src="/images/Product Image (1).png" // Replace with actual image URL
-                    alt="Gray Vase"
-                    width={64}
-                    height={64}
-                    className="object-cover rounded"
-                  />
-                  <div>
-                    <h3 className="font-medium text-[#2A254B]">Graystone Vase</h3>
-                    <p className="text-gray-500 text-sm">A beautiful stone vase</p>
-                  </div>
-                </div>
-                <p className="font-semibold text-[#2A254B]">£85</p>
-              </div>
-
-              {/* Product 2 */}
-              <div className="flex items-center justify-between border-b pb-4">
-                <div className="flex items-center space-x-4">
-                  <Image
-                    src="/images/Product Image.png" // Replace with actual image URL
-                    alt="Wood Vase"
-                    width={64}
-                    height={64}
-                    className="object-cover rounded"
-                  />
-                  <div>
-                    <h3 className="font-medium text-[#2A254B]">Basic Wood Vase</h3>
-                    <p className="text-gray-500 text-sm">A sleek wooden vase</p>
-                  </div>
-                </div>
-                <p className="font-semibold text-[#2A254B]">£85</p>
-              </div>
-            </div>
+      <div className="max-w-7xl mx-auto px-4 py-8">
+        <h1 className="lg:text-3xl sm:text-xl font-bold font-clash text-[#2A254B] text-center mb-14-">Your Cart</h1>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-2 justify-center items-start mt-10 shadow-md">
+          <div className="bg-white p-6 shadow-md rounded-lg w-full mx-auto">
+            {cartItems.length === 0 ? (
+              <p className="text-center font-satoshi shadow-md">Your cart is empty</p>
+            ) : (
+              <ul>
+                {cartItems.map((item) => (
+                  <li key={item.product._id} className="flex flex-col sm:flex-row justify-between items-center mb-6 border-b pb-4 w-full">
+                    <div className="flex items-center gap-4 w-full sm:w-auto">
+                      <Image
+                        src={item.product.image.asset.url}
+                        alt={item.product.name}
+                        width={100}
+                        height={100}
+                        className="rounded-lg w-24 h-24 sm:w-28 sm:h-28 object-cover"
+                      />
+                      <div>
+                        <p className="text-lg font-semibold text-[#2A254B]">{item.product.name}</p>
+                        <p className="text-sm text-gray-500">€ {item.product.price}</p>
+                      </div>
+                    </div>
+                    <div className="flex items-center gap-3 mt-4 sm:mt-0">
+                      <button
+                        onClick={() => handleQuantityChange(item.product._id, item.quantity - 1)}
+                        disabled={item.quantity <= 1}
+                        className="px-3 py-1 bg-gray-200 rounded-full text-gray-700 hover:bg-gray-300"
+                      >
+                        −
+                      </button>
+                      <span className="font-medium text-[#2A254B]">{item.quantity}</span>
+                      <button
+                        onClick={() => handleQuantityChange(item.product._id, item.quantity + 1)}
+                        className="px-3 py-1 bg-gray-200 rounded-full text-gray-700 hover:bg-gray-300"
+                      >
+                        +
+                      </button>
+                      <button
+                        onClick={() => handleRemove(item.product._id)}
+                        className="text-red-500 hover:text-red-700 ml-4"
+                      >
+                        ❌
+                      </button>
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            )}
           </div>
-
-          {/* Right Section */}
-          <div className="bg-white shadow-lg rounded-lg p-6">
-            <h2 className="text-xl font-semibold mb-4 text-[#2A254B]">Summary</h2>
-            <div className="space-y-2">
-              <div className="flex justify-between text-[#2A254B]">
-                <span>Subtotal</span>
-                <span className="font-semibold">£170</span>
-              </div>
-              <div className="flex justify-between text-[#2A254B]">
-                <span>Shipping</span>
-                <span className="font-semibold">£40</span>
-              </div>
+          <div className="bg-white p-6 shadow-md rounded-lg w-full mx-auto max-w-sm">
+            <h2 className="text-xl font-semibold text-[#2A254B] mb-4 text-center font-clash">Order Summary</h2>
+            <div className="flex justify-between text-[#2A254B] mb-2 font-satoshi">
+              <span>Subtotal:</span>
+              <span>€ {subtotal.toFixed(2)}</span>
             </div>
-            <div className="border-t my-4"></div>
-            <div className="flex justify-between font-bold text-lg text-[#2A254B]">
-              <span>Total</span>
-              <span>£210</span>
+            <div className="flex justify-between text-[#2A254B] mb-2">
+              <span>Shipping:</span>
+              <span>{shipping === 0 ? "Free" : `€ ${shipping.toFixed(2)}`}</span>
             </div>
-            <button className="w-full mt- bg-[#4E4D93] text-white py-3 rounded-lg text-center font-medium hover:bg-blue-700">
-              Go to Checkout
+            <hr className="my-4" />
+            <div className="flex justify-between text-lg font-semibold text-[#2A254B] font-satoshi">
+              <span>Total:</span>
+              <span>€ {total.toFixed(2)}</span>
+            </div>
+            <button
+              disabled={cartItems.length === 0}
+              className={`w-full py-2 mt-6 rounded ${cartItems.length > 0 ? 'bg-green-600 text-white hover:bg-green-700' : 'bg-gray-400 text-gray-200 cursor-not-allowed'}`}
+            >
+              Proceed to Checkout
             </button>
           </div>
         </div>
@@ -87,5 +107,4 @@ const ShoppingCart: React.FC = () => {
   );
 };
 
-export default ShoppingCart;
-
+export default CartPage;

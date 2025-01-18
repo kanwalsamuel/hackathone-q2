@@ -5,3 +5,12 @@ const nextConfig: NextConfig = {
 };
 
 export default nextConfig;
+
+
+
+// next.config.js
+module.exports = {
+  images: {
+    domains: ['cdn.sanity.io'], // Add Sanity CDN to the list of allowed domains
+  },
+};
