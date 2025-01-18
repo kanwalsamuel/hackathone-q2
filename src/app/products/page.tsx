@@ -266,6 +266,7 @@
 
 
 
+
 "use client";
 
 import React, { useState, useEffect, useCallback } from "react";
@@ -297,7 +298,7 @@ const Dropdown: React.FC<DropdownProps> = ({ label, isOpen, onToggle, options })
   <div className="relative">
     <button
       onClick={onToggle}
-      className="flex items-center justify-between px-4 py-2 text-[#2a254b] bg-white border border-gray-300 rounded-md shadow-md hover:bg-gray-100 font-clash font-medium text-sm w-50 transition-all duration-300 sm:w-20"
+      className="flex items-center justify-between px-4 py-2 text-[#2a254b]  border-gray-300 rounded-md shadow-sm hover:bg-gray-100 font-clash font-medium text-sm w-50 transition-all duration-300 sm:w-20 lg:w-48"
       aria-expanded={isOpen}
     >
       {label}
@@ -359,7 +360,9 @@ const ProductsComponent: React.FC = () => {
   return (
     <div className="relative flex flex-col w-full bg-[#f9f9f9] min-h-screen">
       <TopNav />
-      <div className="relative w-full h-[200px] mt-10">
+      
+      {/* Background Image Section */}
+      <div className="relative w-full h-[200px] mt-20 ">
         <Image
           src="/images/productBg.png"
           alt="Product Background"
@@ -369,13 +372,15 @@ const ProductsComponent: React.FC = () => {
         />
       </div>
 
+      {/* Mobile and Medium screens (sm, md): Center filters and sorting */}
       <div className="flex justify-center gap-2 px-4 py-8 lg:hidden">
         <Dropdown label="Filter" isOpen={openFilter === "Filter"} onToggle={() => toggleFilter("Filter")} options={["Price", "Category", "Product Type", "Brand"]} />
         <Dropdown label="Sorting" isOpen={openFilter === "Sorting"} onToggle={() => toggleFilter("Sorting")} options={sortingOptions} />
       </div>
 
+      {/* Large screens (lg): Left-aligned filters and right-aligned sorting */}
       <div className="hidden lg:flex justify-between gap-4 px-6 py-4 w-full">
-        <div className="flex gap-6 shadow-md font-clash text-[#2a254b]">
+        <div className="flex gap-6 shadow-sm font-clash text-[#2a254b]">
           <Dropdown label="Category" isOpen={openFilter === "Category"} onToggle={() => toggleFilter("Category")} options={categories} />
           <Dropdown label="Product Type" isOpen={openFilter === "ProductType"} onToggle={() => toggleFilter("ProductType")} options={productTypes} />
           <Dropdown label="Price" isOpen={openFilter === "Price"} onToggle={() => toggleFilter("Price")} options={priceOptions} />
@@ -390,7 +395,7 @@ const ProductsComponent: React.FC = () => {
             <div className="col-span-4 text-center text-[#2a254b]">Loading products...</div>
           ) : (
             products.map((product) => (
-              <Link key={product._id} href={`/product/${product._id}`} passHref>
+              <Link key={product._id} href={`/productSanity/${product._id}`} passHref>
                 <div className="border p-4 rounded-lg text-center bg-white shadow-md hover:shadow-xl transform hover:scale-105 transition-transform cursor-pointer">
                   <Image src={product.image.asset.url} alt={product.name} width={300} height={300} className="rounded-md mx-auto" loading="lazy" />
                   <h3 className="mt-2 font-clash text-lg text-[#2A254B]">{product.name}</h3>
