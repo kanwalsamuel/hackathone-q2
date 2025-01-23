@@ -1,0 +1,30 @@
+
+
+
+
+  {
+    "version": 2,
+    "builds": [
+      {
+        "src": "package.json", 
+        "use": "@vercel/next"   
+      }
+    ],
+    "routes": [
+      {
+        "src": "/old-url", 
+        "dest": "/new-url" 
+      },
+      {
+        "src": "/products", 
+        "dest": "/category/all" 
+      }
+    ],
+    "env": {
+      "NEXT_PUBLIC_API_URL": "",
+      "SANITY_PROJECT_ID": "oxt60qdy", 
+      "SANITY_DATASET": "production"
+    }
+  }
+  
+  
