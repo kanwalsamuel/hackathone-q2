@@ -71,7 +71,7 @@ module.exports = {
   images: {
     remotePatterns: [
       {
-        protocol: 'https',
+        protocol: 'http',
         hostname: 'cdn.sanity.io',
         port: '',
         pathname: '/**',
@@ -84,7 +84,33 @@ module.exports = {
       },
     ],
   },
-  typescript: {
-    ignoreBuildErrors: true, // Ignores TypeScript errors during the build
+  // typescript: {
+  //   ignoreBuildErrors: true, // Ignores TypeScript errors during the build
+  // },
+};
+
+
+module.exports = {
+  eslint: {
+    ignoreDuringBuilds: true, // Ignores ESLint during production builds
   },
+  images: {
+    domains: ['cdn.sanity.io'], // Allow images from Sanity's CDN
+    remotePatterns: [
+      {
+        protocol: 'http',
+        hostname: 'cdn.sanity.io',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'maps.googleapis.com',
+        port: '',
+        pathname: '/**',
+      },
+    ],
+  },
+   typescript: {
+     ignoreBuildErrors: true, // Ignores TypeScript errors during the build
+   },
 };
