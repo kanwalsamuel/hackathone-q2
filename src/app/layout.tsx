@@ -40,6 +40,62 @@
 // // //           <LoadingAnimation /> // Only show loading animation when loading
 // // //         ) : (
 // // //           <CartProvider>
+// // // //             <WishlistProvider>
+// // // //               <div className="mx-auto max-w-[1440px]">
+// // // //                 {children}
+// // // //                 <Footer />
+// // // //               </div>
+// // // //             </WishlistProvider>
+// // // //           </CartProvider>
+// // // //         )}
+// // // //       </body>
+// // // //     </html>
+// // // //   );
+// // // // }
+
+
+
+// // // "use client";
+
+// // // import localFont from "next/font/local";
+// // // import "./globals.css";
+// // // import Footer from "./components/footer";
+// // // import { CartProvider } from "../context/cartContext";
+// // // import { WishlistProvider } from "@/context/wishListContext";
+// // // import { useState, useEffect } from "react";
+// // // import LoadingAnimation from "./components/loadingAnimation"; // Import the LoadingAnimation component
+
+// // // const geistSans = localFont({
+// // //   src: "./fonts/GeistVF.woff",
+// // //   variable: "--font-geist-sans",
+// // //   weight: "100 900",
+// // // });
+
+// // // const geistMono = localFont({
+// // //   src: "./fonts/GeistMonoVF.woff",
+// // //   variable: "--font-geist-mono",
+// // //   weight: "100 900",
+// // // });
+
+// // // export default function RootLayout({
+// // //   children,
+// // // }: Readonly<{
+// // //   children: React.ReactNode;
+// // // }>) {
+// // //   const [loading, setLoading] = useState(true);
+
+// // //   useEffect(() => {
+// // //     const timer = setTimeout(() => setLoading(false), 3000); // Adjust loading duration
+// // //     return () => clearTimeout(timer);
+// // //   }, []);
+
+// // //   return (
+// // //     <html lang="en">
+// // //       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+// // //         {loading ? (
+// // //           <LoadingAnimation /> // Use the LoadingAnimation component
+// // //         ) : (
+// // //           <CartProvider>
 // // //             <WishlistProvider>
 // // //               <div className="mx-auto max-w-[1440px]">
 // // //                 {children}
@@ -55,7 +111,8 @@
 
 
 
-// // "use client";
+// // // layout.tsx (Client-side component)
+// // "use client"; 
 
 // // import localFont from "next/font/local";
 // // import "./globals.css";
@@ -63,7 +120,7 @@
 // // import { CartProvider } from "../context/cartContext";
 // // import { WishlistProvider } from "@/context/wishListContext";
 // // import { useState, useEffect } from "react";
-// // import LoadingAnimation from "./components/loadingAnimation"; // Import the LoadingAnimation component
+// // import LoadingAnimation from "./components/loadingAnimation";
 
 // // const geistSans = localFont({
 // //   src: "./fonts/GeistVF.woff",
@@ -79,13 +136,11 @@
 
 // // export default function RootLayout({
 // //   children,
-// // }: Readonly<{
-// //   children: React.ReactNode;
-// // }>) {
+// // }: Readonly<{ children: React.ReactNode }>) {
 // //   const [loading, setLoading] = useState(true);
 
 // //   useEffect(() => {
-// //     const timer = setTimeout(() => setLoading(false), 3000); // Adjust loading duration
+// //     const timer = setTimeout(() => setLoading(false), 3000); 
 // //     return () => clearTimeout(timer);
 // //   }, []);
 
@@ -93,7 +148,7 @@
 // //     <html lang="en">
 // //       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
 // //         {loading ? (
-// //           <LoadingAnimation /> // Use the LoadingAnimation component
+// //           <LoadingAnimation />
 // //         ) : (
 // //           <CartProvider>
 // //             <WishlistProvider>
@@ -111,28 +166,18 @@
 
 
 
-// // layout.tsx (Client-side component)
+
 // "use client"; 
 
-// import localFont from "next/font/local";
+
 // import "./globals.css";
 // import Footer from "./components/footer";
 // import { CartProvider } from "../context/cartContext";
 // import { WishlistProvider } from "@/context/wishListContext";
 // import { useState, useEffect } from "react";
-// import LoadingAnimation from "./components/loadingAnimation";
+// import LoadingAnimation from "./components/loadingAnimation"; // Import the LoadingAnimation component
 
-// const geistSans = localFont({
-//   src: "./fonts/GeistVF.woff",
-//   variable: "--font-geist-sans",
-//   weight: "100 900",
-// });
-
-// const geistMono = localFont({
-//   src: "./fonts/GeistMonoVF.woff",
-//   variable: "--font-geist-mono",
-//   weight: "100 900",
-// });
+// // Import local fonts
 
 // export default function RootLayout({
 //   children,
@@ -140,15 +185,19 @@
 //   const [loading, setLoading] = useState(true);
 
 //   useEffect(() => {
-//     const timer = setTimeout(() => setLoading(false), 3000); 
+//     const timer = setTimeout(() => setLoading(false), 3000); // Adjust loading duration
 //     return () => clearTimeout(timer);
 //   }, []);
 
 //   return (
 //     <html lang="en">
-//       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+//       <head>
+//         <meta charSet="UTF-8" />
+//         <meta name="viewport" content="width=device-width, initial-scale=1" />
+//         <title>My Next.js Application</title>
+//       </head>
 //         {loading ? (
-//           <LoadingAnimation />
+//           <LoadingAnimation /> // Only show loading animation when loading
 //         ) : (
 //           <CartProvider>
 //             <WishlistProvider>
@@ -167,9 +216,12 @@
 
 
 
-"use client"; 
 
-import localFont from "next/font/local";
+
+
+
+"use client";
+
 import "./globals.css";
 import Footer from "./components/footer";
 import { CartProvider } from "../context/cartContext";
@@ -196,7 +248,7 @@ export default function RootLayout({
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <title>My Next.js Application</title>
       </head>
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+      <body>
         {loading ? (
           <LoadingAnimation /> // Only show loading animation when loading
         ) : (
