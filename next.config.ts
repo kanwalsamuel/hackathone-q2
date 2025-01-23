@@ -114,7 +114,5 @@ module.exports = {
       ignoreBuildErrors: true, // Ignores TypeScript errors during the build
     },
 
-    experimental:{
-      missingSuspenseWithCSRBailout:false,
-    }
+    
 };
