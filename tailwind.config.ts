@@ -1,6 +1,7 @@
 
 
 
+
 import type { Config } from "tailwindcss";
 import typography from '@tailwindcss/typography'; // ES Module import
 
@@ -130,33 +131,9 @@ export default {
         },
       },
     },
-    animation: {
-      "ball-zoom": "ballZoom 2s ease-in-out infinite",
-    },
-    keyframes: {
-      ballZoom: {
-        "0%": {
-          transform: "scale(1) translateZ(0px)",
-          opacity: "1",
-          boxShadow: "0 0 20px 5px rgba(255, 255, 255, 0.6)",
-        },
-        "50%": {
-          transform: "scale(0.5) translateZ(-200px)",
-          opacity: "0.4",
-          boxShadow: "0 0 40px 10px rgba(255, 255, 255, 0.3)",
-        },
-        "100%": {
-          transform: "scale(1) translateZ(0px)",
-          opacity: "1",
-          boxShadow: "0 0 20px 5px rgba(255, 255, 255, 0.8)",
-        },
-      },
-    },
     backgroundImage: {
       "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
     },
-
-    
   },
   plugins: [
     typography, // Use the imported typography plugin here
