@@ -96,7 +96,7 @@ module.exports = {
   },
   images: {
     domains: ['cdn.sanity.io'], // Allow images from Sanity's CDN
-    remotePatterns: [
+     remotePatterns: [
       {
         protocol: 'http',
         hostname: 'cdn.sanity.io',
@@ -110,7 +110,7 @@ module.exports = {
       },
     ],
   },
-   typescript: {
-     ignoreBuildErrors: true, // Ignores TypeScript errors during the build
-   },
+    typescript: {
+      ignoreBuildErrors: true, // Ignores TypeScript errors during the build
+    },
 };
