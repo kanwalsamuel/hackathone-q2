@@ -157,7 +157,7 @@ export default async function CategoryPage({
 }: {
   params: { slug: string };
 }) {
-  const { slug } = params;
+  const { slug } =  await params;
 
   // Handle undefined slug
   if (!slug) {
