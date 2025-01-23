@@ -59,35 +59,35 @@
 //         pathname: '/**',
 //       },
 //     ],
+// //   },
+// // };
+
+
+
+// module.exports = {
+//   eslint: {
+//     ignoreDuringBuilds: true, // Ignores ESLint during production builds
 //   },
+//   images: {
+//     remotePatterns: [
+//       {
+//         protocol: 'http',
+//         hostname: 'cdn.sanity.io',
+//         port: '',
+//         pathname: '/**',
+//       },
+//       {
+//         protocol: 'https',
+//         hostname: 'maps.googleapis.com',
+//         port: '',
+//         pathname: '/**',
+//       },
+//     ],
+//   },
+//   // typescript: {
+//   //   ignoreBuildErrors: true, // Ignores TypeScript errors during the build
+//   // },
 // };
-
-
-
-module.exports = {
-  eslint: {
-    ignoreDuringBuilds: true, // Ignores ESLint during production builds
-  },
-  images: {
-    remotePatterns: [
-      {
-        protocol: 'http',
-        hostname: 'cdn.sanity.io',
-        port: '',
-        pathname: '/**',
-      },
-      {
-        protocol: 'https',
-        hostname: 'maps.googleapis.com',
-        port: '',
-        pathname: '/**',
-      },
-    ],
-  },
-  // typescript: {
-  //   ignoreBuildErrors: true, // Ignores TypeScript errors during the build
-  // },
-};
 
 
 module.exports = {
@@ -113,4 +113,8 @@ module.exports = {
     typescript: {
       ignoreBuildErrors: true, // Ignores TypeScript errors during the build
     },
+
+    experimental:{
+      missingSuspenseWithCSRBailout:false,
+    }
 };
