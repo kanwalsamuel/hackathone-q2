@@ -4,7 +4,7 @@ import React from "react";
 
 export default function LoadingAnimation() {
   return (
-    <div className="fixed inset-0 flex items-center justify-center bg-black z-50">
+    <div className="fixed inset-0 flex items-center justify-center  bg-[#2A254B] z-50">
       {/* Ball animation */}
       <div className="relative">
         <div className="w-16 h-16 bg-white rounded-full animate-ball-zoom"></div>

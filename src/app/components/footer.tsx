@@ -201,11 +201,11 @@ const Footer = () => {
         <div className="text-white w-full sm:w-auto">
           <h1 className="text-lg md:text-xl font-bold font-clash">Menu</h1>
           <div className='space-y-2 font-satoshi'>
-            <h1><Link href={'/newarrivals'}>New Arrivals</Link></h1>
-            <h1><Link href={'/bestSeller'}>Best sellers</Link></h1>
-            <h1><Link href={'/products'}>Recently viewed</Link></h1>
-            <h1><Link href={'/category/crockery'}>Popular this week</Link></h1>
-            <h1><Link href={'/products'}>All Products</Link></h1>
+            <p><Link href={'/newarrivals'}>New Arrivals</Link></p>
+            <p><Link href={'/bestSeller'}>Best sellers</Link></p>
+            <p><Link href={'/products'}>Recently viewed</Link></p>
+            <p><Link href={'/category/crockery'}>Popular this week</Link></p>
+            <p><Link href={'/products'}>All Products</Link></p>
           </div>
         </div>
 
@@ -213,11 +213,11 @@ const Footer = () => {
         <div className="text-white w-full sm:w-auto">
           <h1 className="text-lg md:text-xl font-bold font-clash">Categories</h1>
           <div className='space-y-2 font-satoshi'>
-            <h1><Link href={'/category/crockery'}>Crockery</Link></h1>
-            <h1><Link href={'/product'}>Furniture</Link></h1>
-            <h1><Link href={'/product'}>Homeware</Link></h1>
-            <h1><Link href={'/category/plant-pots'}>Plant pots</Link></h1>
-            <h1><Link href={'/category/chairs'}>Chairs</Link></h1>
+            <p><Link href={'/category/crockery'}>Crockery</Link></p>
+            <p><Link href={'/product'}>Furniture</Link></p>
+            <p><Link href={'/product'}>Homeware</Link></p>
+            <p><Link href={'/category/plant-pots'}>Plant pots</Link></p>
+            <p><Link href={'/category/chairs'}>Chairs</Link></p>
           </div>
         </div>
 
