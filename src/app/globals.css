@@ -1,24 +1,17 @@
-/* global.css or your main stylesheet */
 
-/* Import fonts from Google Fonts */
-
-
-
-
-/* Tailwind's base, components, and utilities */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* Root variables for background, foreground, and fonts */
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
-  --font-primary: 'Satoshi', sans-serif;  /* Primary font (for body text) */
-  --font-heading: 'Clash Display', serif; /* Font for headings */
+  --font-primary: 'Satoshi', sans-serif;  
+  --font-heading: 'Clash Display', serif; 
 }
 
-/* Dark mode styles */
+
 @media (prefers-color-scheme: dark) {
   :root {
     --background: white;
@@ -26,19 +19,45 @@
   }
 }
 
-/* Body styling: use the primary font for general text */
+
 body {
   color: var(--foreground);
   background-color: var(--background);
-  font-family: var(--font-primary); /* Use Satoshi for body text */
+  font-family: var(--font-primary); 
 }
 
-/* Headings styling: use the heading font */
+
 h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-heading); /* Use Clash Display for headings */
+  font-family: var(--font-heading); 
 }
 
-/* Paragraph styling: explicitly use Satoshi for paragraphs */
+
 p {
-  font-family: var(--font-primary); /* Ensure Satoshi is used for paragraphs */
+  font-family: var(--font-primary); 
+}       
+
+/* Keyframes for the ball animation */
+@keyframes ballZoom {
+  0% {
+    transform: scale(1) translateZ(0px);
+    opacity: 1;
+    box-shadow: 0 0 20px 5px rgba(255, 255, 255, 0.6);
+  }
+  50% {
+    transform: scale(0.5) translateZ(-200px);
+    opacity: 0.4;
+    box-shadow: 0 0 40px 10px rgba(255, 255, 255, 0.3);
+  }
+  100% {
+    transform: scale(1) translateZ(0px);
+    opacity: 1;
+    box-shadow: 0 0 20px 5px rgba(255, 255, 255, 0.8);
+  }
+}
+
+/* Tailwind utility */
+@layer utilities {
+  .animate-ball-zoom {
+    animation: ballZoom 2s ease-in-out infinite;
+  }
 }

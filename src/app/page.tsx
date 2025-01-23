@@ -19,15 +19,6 @@ export default function Home() {
       <ListingComponent/>
       <Products/>
       <Features/>
-      
-      
-  
-
-      {/* Hero Section with Clash Display font */} 
-      
-
-{/* Page Content */}
-      
     </div>
   );      
 }
