@@ -1,264 +1,17 @@
-
-
-
-
-
-
-
-// // // // import { notFound } from "next/navigation";
-// // // // import Image from "next/image";
-// // // // import { client } from "@/sanity/lib/client";
-// // // // import Link from "next/link";
-
-// // // // // Define Product type
-// // // // interface Product {
-// // // //   _id: string;
-// // // //   name: string;
-// // // //   price: number;
-// // // //   image: string;
-// // // //   slug: string;
-// // // // }
-
-// // // // // Fetch products by category slug
-// // // // async function getProductsByCategory(slug: string): Promise<Product[]> {
-// // // //   const query = `*[_type == "product" && category->slug.current == $slug] {
-// // // //     _id,
-// // // //     name,
-// // // //     price,
-// // // //     "image": image.asset->url,
-// // // //     "slug": slug.current // Ensure slug is returned as a string
-// // // //   }`;
-// // // //   return client.fetch(query, { slug });
-// // // // }
-
-// // // // // Fetch all categories for dynamic paths
-// // // // export async function generateStaticParams() {
-// // // //   const categories = await client.fetch(`*[_type == "category"]{ "slug": slug.current }`);
-// // // //   return categories.map((category: { slug: string }) => ({
-// // // //     slug: category.slug,
-// // // //   }));
-// // // // }
-
-// // // // // Page Component
-// // // // export default async function CategoryPage({
-// // // //   params,
-// // // // }: {
-// // // //   params: { slug: string };
-// // // // }) {
-// // // //   const { slug } = params;
-
-// // // //   // Handle undefined slug
-// // // //   if (!slug) {
-// // // //     return notFound();
-// // // //   }
-
-// // // //   // Fetch products
-// // // //   const products = await getProductsByCategory(slug);
-
-// // // //   // Handle no products found
-// // // //   if (!products || products.length === 0) {
-// // // //     return notFound();
-// // // //   }
-
-// // // //   return (
-// // // //     <div className="container mx-auto p-6">
-// // // //       {/* Top Navigation */}
-// // // //       <nav className="bg-[#2A254B] text-white p-4 mb-6">
-// // // //         <div className="container mx-auto flex justify-between items-center">
-// // // //           <Link href="/" className="text-2xl  font-clash">
-// // // //             Avion
-// // // //           </Link>
-// // // //           <div className="space-x-6 font-satoshi">
-// // // //             <Link href="/" className="hover:underline">Home</Link>
-// // // //             <Link href="/about" className="hover:underline">About</Link>
-// // // //             <Link href="/contact" className="hover:underline">Contact</Link>
-// // // //             <Link href="/products" className="hover:underline">Products</Link>
-// // // //           </div>
-// // // //         </div>
-// // // //       </nav>
-
-// // // //       {/* Dynamic Category Name */}
-// // // //       <h1 className="text-4xl font-bold capitalize mb-6 text-[#2A254B]">
-// // // //         {slug} Products
-// // // //       </h1>
-
-// // // //       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-// // // //         {products.map((product) => (
-// // // //           <div
-// // // //             key={product._id}
-// // // //             className="border border-gray-200 p-4 rounded-lg shadow-md transition-transform duration-300 hover:scale-105"
-// // // //           >
-// // // //             {/* Product Image */}
-// // // //             <div className="relative w-full h-64 mb-4"> {/* Increased height here */}
-// // // //               <Image
-// // // //                 src={product.image}
-// // // //                 alt={product.name}
-// // // //                 layout="fill" // Ensures it covers the container area
-// // // //                 objectFit="contain" // Ensures the image is not cropped
-// // // //                 className="rounded-md"
-// // // //               />
-// // // //             </div>
-// // // //             <h2 className="text-lg font-semibold mt-4 text-[#2A254B]">
-// // // //               {product.name}
-// // // //             </h2>
-// // // //             <p className="text-gray-600 mt-2">${product.price}</p>
-// // // //             {/* Product Details Link */}
-// // // //             <Link
-// // // //               href={`/product/${product.slug}`} // Use product.slug as a string
-// // // //               className="inline-block mt-4 px-4 py-2 text-center text-white bg-[#2A254B] rounded-lg hover:bg-blue-600 transition duration-300"
-// // // //             >
-// // // //               More Info
-// // // //             </Link>
-// // // //           </div>
-// // // //         ))}
-// // // //       </div>
-// // // //     </div>
-// // // //   );
-// // // // }
-
-
-// // // // import { notFound } from "next/navigation";
-// // // // import Image from "next/image";
-// // // // import { client } from "@/sanity/lib/client";
-// // // // import Link from "next/link";
-
-// // // // // Define Product type
-// // // // interface Product {
-// // // //   _id: string;
-// // // //   name: string;
-// // // //   price: number;
-// // // //   image: string;
-// // // //   slug: string;
-// // // // }
-
-// // // // // Fetch products by category slug
-// // // // async function getProductsByCategory(slug: string): Promise<Product[]> {
-// // // //   const query = `*[_type == "product" && category->slug.current == $slug] {
-// // // //     _id,
-// // // //     name,
-// // // //     price,
-// // // //     "image": image.asset->url,
-// // // //     "slug": slug.current // Ensure slug is returned as a string
-// // // //   }`;
-// // // //   return client.fetch(query, { slug });
-// // // // }
-
-// // // // // Fetch all categories for dynamic paths
-// // // // export async function generateStaticParams() {
-// // // //   const categories = await client.fetch(`*[_type == "category"]{ "slug": slug.current }`);
-// // // //   return categories.map((category: { slug: string }) => ({
-// // // //     slug: category.slug,
-// // // //   }));
-// // // // }
-
-// // // // // Page Component
-// // // // export default async function CategoryPage({
-// // // //   params,
-// // // // }: {
-// // // //   params: { slug: string };
-// // // // }) {
-// // // //   const { slug } =  await params;
-
-// // // //   // Handle undefined slug
-// // // //   if (!slug) {
-// // // //     return notFound();
-// // // //   }
-
-// // // //   // Fetch products
-// // // //   const products = await getProductsByCategory(slug);
-
-// // // //   // Handle no products found
-// // // //   if (!products || products.length === 0) {
-// // // //     return notFound();
-// // // //   }
-
-// // // //   return (
-// // // //     <div className="container mx-auto p-6">
-// // // //       {/* Top Navigation */}
-// // // //       <nav className="bg-[#2A254B] text-white p-4 mb-6">
-// // // //         <div className="container mx-auto flex justify-between items-center">
-// // // //           <Link href="/" className="text-2xl  font-clash">
-// // // //             Avion
-// // // //           </Link>
-// // // //           <div className="space-x-6 font-satoshi">
-// // // //             <Link href="/" className="hover:underline">Home</Link>
-// // // //             <Link href="/about" className="hover:underline">About</Link>
-// // // //             <Link href="/contact" className="hover:underline">Contact</Link>
-// // // //             <Link href="/products" className="hover:underline">Products</Link>
-// // // //           </div>
-// // // //         </div>
-// // // //       </nav>
-
-// // // //       {/* Dynamic Category Name */}
-// // // //       <h1 className="text-4xl font-bold capitalize mb-6 text-[#2A254B]">
-// // // //         {slug} Products
-// // // //       </h1>
-
-// // // //       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-// // // //         {products.map((product) => (
-// // // //           <div
-// // // //             key={product._id}
-// // // //             className="border border-gray-200 p-4 rounded-lg shadow-md transition-transform duration-300 hover:scale-105"
-// // // //           >
-// // // //             {/* Product Image */}
-// // // //             <div className="relative w-full h-64 mb-4"> {/* Increased height here */}
-// // // //               <Image
-// // // //                 src={product.image}
-// // // //                 alt={product.name}
-// // // //                 layout="fill" // Ensures it covers the container area
-// // // //                 objectFit="contain" // Ensures the image is not cropped
-// // // //                 className="rounded-md"
-// // // //               />
-// // // //             </div>
-// // // //             <h2 className="text-lg font-semibold mt-4 text-[#2A254B]">
-// // // //               {product.name}
-// // // //             </h2>
-// // // //             <p className="text-gray-600 mt-2">${product.price}</p>
-// // // //             {/* Product Details Link */}
-// // // //             <Link
-// // // //               href={`/product/${product.slug}`} // Use product.slug as a string
-// // // //               className="inline-block mt-4 px-4 py-2 text-center text-white bg-[#2A254B] rounded-lg hover:bg-blue-600 transition duration-300"
-// // // //             >
-// // // //               More Info
-// // // //             </Link>
-// // // //           </div>
-// // // //         ))}
-// // // //       </div>
-// // // //     </div>
-// // // //   );
-
-
-
-// // // //  }
-
-
 // // import { notFound } from "next/navigation";
 // // import Image from "next/image";
-// // import { client } from "@/sanity/lib/client";
+// // import { client } from "../../../sanity/lib/client";
+// // import imageUrlBuilder from "@sanity/image-url";
 // // import Link from "next/link";
 
-// // // Define Product type
-// // interface Product {
-// //   _id: string;
-// //   name: string;
-// //   price: number;
-// //   image: string;
-// //   slug: string;
+// // // Helper to build image URLs from Sanity
+// // const builder = imageUrlBuilder(client);
+
+// // function urlFor(source: any) {
+// //   return builder.image(source).url();
 // // }
 
-// // // Fetch products by category slug
-// // async function getProductsByCategory(slug: string): Promise<Product[]> {
-// //   const query = `*[_type == "product" && category->slug.current == $slug] {
-// //     _id,
-// //     name,
-// //     price,
-// //     "image": image.asset->url,
-// //     "slug": slug.current // Ensure slug is returned as a string
-// //   }`;
-// //   return client.fetch(query, { slug });
-// // }
-
-// // // Fetch all categories for dynamic paths
+// // // Function to fetch all category slugs for generating static paths
 // // export async function generateStaticParams() {
 // //   const categories = await client.fetch(`*[_type == "category"]{ "slug": slug.current }`);
 // //   return categories.map((category: { slug: string }) => ({
@@ -266,75 +19,76 @@
 // //   }));
 // // }
 
-// // // Page Component
-// // export default async function CategoryPage({
-// //   params,
-// // }: {
-// //   params: { slug: string };
-// // }) {
-// //   const { slug } = params; // Remove await since params is directly passed
+// // // Function to fetch data for a specific category
+// // async function getCategoryData(slug: string) {
+// //   const query = `*[_type == "category" && slug.current == $slug][0] {
+// //     title,
+// //     "products": *[_type == "product" && references(^._id)] {
+// //       _id,
+// //       name,
+// //       description,
+// //       price,
+// //       image,
+// //       slug
+// //     }
+// //   }`;
 
-// //   // Handle undefined slug
+// //   const data = await client.fetch(query, { slug });
+// //   return data;
+// // }
+
+// // // Category Page Component
+// // export default async function CategoryPage({ params }: { params: { slug: string } }) {
+// //   // Await params before accessing
+// //   const { slug } = await params;  // This should work, now awaiting params
+
 // //   if (!slug) {
 // //     return notFound();
 // //   }
 
-// //   // Fetch products
-// //   const products = await getProductsByCategory(slug);
+// //   // Fetch category data
+// //   const data = await getCategoryData(slug);
 
-// //   // Handle no products found
-// //   if (!products || products.length === 0) {
-// //     return notFound();
+// //   if (!data || !data.products.length) {
+// //     return notFound();  // Return 404 if no data found
 // //   }
 
+// //   const { title, products } = data;
+
 // //   return (
-// //     <div className="container mx-auto p-6">
-// //       {/* Top Navigation */}
-// //       <nav className="bg-[#2A254B] text-white p-4 mb-6">
-// //         <div className="container mx-auto flex justify-between items-center">
-// //           <Link href="/" className="text-2xl font-clash">
-// //             Avion
-// //           </Link>
-// //           <div className="space-x-6 font-satoshi">
-// //             <Link href="/" className="hover:underline">Home</Link>
-// //             <Link href="/about" className="hover:underline">About</Link>
-// //             <Link href="/contact" className="hover:underline">Contact</Link>
-// //             <Link href="/products" className="hover:underline">Products</Link>
-// //           </div>
-// //         </div>
-// //       </nav>
+// //     <div className="container mx-auto py-8">
+// //       {/* Category Title */}
+// //       <h1 className="text-4xl font-bold mb-6 text-[#2a254b]">{title} Products</h1>
 
-// //       {/* Dynamic Category Name */}
-// //       <h1 className="text-4xl font-bold capitalize mb-6 text-[#2A254B]">
-// //         {slug} Products
-// //       </h1>
-
-// //       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-// //         {products.map((product) => (
+// //       {/* Product Grid */}
+// //       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+// //         {products.map((product: any) => (
 // //           <div
 // //             key={product._id}
-// //             className="border border-gray-200 p-4 rounded-lg shadow-md transition-transform duration-300 hover:scale-105"
+// //             className="border p-6 rounded-lg shadow-lg transition-transform duration-300 transform hover:scale-105"
 // //           >
 // //             {/* Product Image */}
-// //             <div className="relative w-full h-64 mb-4"> {/* Increased height here */}
-// //               {/* Ensure that fallback image is used if image URL is missing */}
+// //             <div className="w-full h-[300px] flex items-center justify-center overflow-hidden rounded-lg bg-gray-100">
 // //               <Image
-// //                 src={product.image || "/fallback-image.jpg"} // Fallback for missing image
+// //                 src={urlFor(product.image)}
 // //                 alt={product.name}
-// //                 layout="responsive" // Adjusted layout
-// //                 width={300} // Adjust width
-// //                 height={300} // Adjust height
-// //                 className="rounded-md object-cover" // Improved image handling
+// //                 width={500}
+// //                 height={500}
+// //                 className="object-cover"
 // //               />
 // //             </div>
-// //             <h2 className="text-lg font-semibold mt-4 text-[#2A254B]">
-// //               {product.name}
-// //             </h2>
-// //             <p className="text-gray-600 mt-2">${product.price}</p>
-// //             {/* Product Details Link */}
+
+// //             {/* Product Details */}
+// //             <div className="flex flex-col mt-4">
+// //               <h2 className="text-lg font-semibold text-[#2a254b]">{product.name}</h2>
+// //               <p className="text-gray-600 mt-2">{product.description}</p>
+// //               <p className="font-bold text-[#2a254b] mt-2">${product.price}</p>
+// //             </div>
+
+// //             {/* More Info Button with Category Info */}
 // //             <Link
-// //               href={`/product/${product.slug}`} // Use product.slug as a string
-// //               className="inline-block mt-4 px-4 py-2 text-center text-white bg-[#2A254B] rounded-lg hover:bg-blue-600 transition duration-300"
+// //               href={`/product/${product.slug.current}`}
+// //               className="block w-full px-4 py-2 mt-4 text-center text-white bg-[#2A254B] rounded-lg hover:bg-blue-600 transition duration-300"
 // //             >
 // //               More Info
 // //             </Link>
@@ -345,115 +99,100 @@
 // //   );
 // // }
 
+
+
+
+
 // import { notFound } from "next/navigation";
 // import Image from "next/image";
-// import { client } from "@/sanity/lib/client";
+// import { client } from "../../../sanity/lib/client";
+// import imageUrlBuilder from "@sanity/image-url";
 // import Link from "next/link";
 
-// // Define Product type
-// interface Product {
-//   _id: string;
-//   name: string;
-//   price: number;
-//   image: string;
-//   slug: string;
+// // Helper to build image URLs from Sanity
+// const builder = imageUrlBuilder(client);
+
+// function urlFor(source: any) {
+//   return builder.image(source).url();
 // }
 
-// // Fetch products by category slug
-// async function getProductsByCategory(slug: string): Promise<Product[]> {
-//   const query = `*[_type == "product" && category->slug.current == $slug] {
-//     _id,
-//     name,
-//     price,
-//     "image": image.asset->url,
-//     "slug": slug.current // Ensure slug is returned as a string
-//   }`;
-//   return client.fetch(query, { slug });
-// }
-
-// // Fetch all categories for dynamic paths
-// export async function getStaticPaths() {
+// // Function to fetch all category slugs for generating static paths
+// export async function generateStaticParams() {
 //   const categories = await client.fetch(`*[_type == "category"]{ "slug": slug.current }`);
-//   const paths = categories.map((category: { slug: string }) => ({
-//     params: { slug: category.slug },
+//   return categories.map((category: { slug: string }) => ({
+//     slug: category.slug,
 //   }));
-
-//   return { paths, fallback: false }; // Static generation with fallback set to false
 // }
 
-// // Fetch category data for static generation
-// export async function getStaticProps({ params }: { params: { slug: string } }) {
-//   const products = await getProductsByCategory(params.slug);
+// // Function to fetch data for a specific category
+// async function getCategoryData(slug: string) {
+//   const query = `*[_type == "category" && slug.current == $slug][0] {
+//     title,
+//     "products": *[_type == "product" && references(^._id)] {
+//       _id,
+//       name,
+//       description,
+//       price,
+//       image,
+//       slug
+//     }
+//   }`;
 
-//   // Return the fetched products as props
-//   return {
-//     props: {
-//       products,
-//       slug: params.slug, // Pass slug for dynamic title rendering
-//     },
-//   };
+//   const data = await client.fetch(query, { slug });
+//   return data;
 // }
 
-// // Page Component
-// export default function CategoryPage({
-//   products,
-//   slug,
-// }: {
-//   products: Product[];
-//   slug: string;
-// }) {
-//   // Handle no products found
-//   if (!products || products.length === 0) {
+// // Category Page Component
+// export default async function CategoryPage({ params }: { params: { slug: string } }) {
+//   const { slug } = await params;
+
+//   if (!slug) {
 //     return notFound();
 //   }
 
+//   // Fetch category data
+//   const data = await getCategoryData(slug);
+
+//   if (!data || !data.products.length) {
+//     return notFound();  // Return 404 if no products are found
+//   }
+
+//   const { title, products } = data;
+
 //   return (
-//     <div className="container mx-auto p-6">
-//       {/* Top Navigation */}
-//       <nav className="bg-[#2A254B] text-white p-4 mb-6">
-//         <div className="container mx-auto flex justify-between items-center">
-//           <Link href="/" className="text-2xl font-clash">
-//             Avion
-//           </Link>
-//           <div className="space-x-6 font-satoshi">
-//             <Link href="/" className="hover:underline">Home</Link>
-//             <Link href="/about" className="hover:underline">About</Link>
-//             <Link href="/contact" className="hover:underline">Contact</Link>
-//             <Link href="/products" className="hover:underline">Products</Link>
-//           </div>
-//         </div>
-//       </nav>
+//     <div className="container mx-auto py-8">
+//       {/* Category Title - Dynamically displaying category name */}
+//       <h1 className="text-4xl font-bold mb-6 text-[#2a254b]">{title} Products</h1>
 
-//       {/* Dynamic Category Name */}
-//       <h1 className="text-4xl font-bold capitalize mb-6 text-[#2A254B]">
-//         {slug} Products
-//       </h1>
-
-//       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-//         {products.map((product) => (
+//       {/* Product Grid */}
+//       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+//         {products.map((product: any) => (
 //           <div
 //             key={product._id}
-//             className="border border-gray-200 p-4 rounded-lg shadow-md transition-transform duration-300 hover:scale-105"
+//             className="border p-6 rounded-lg shadow-lg transition-transform duration-300 transform hover:scale-105"
 //           >
 //             {/* Product Image */}
-//             <div className="relative w-full h-64 mb-4"> {/* Increased height here */}
+//             <div className="w-full h-[300px] flex items-center justify-center overflow-hidden rounded-lg bg-gray-100">
 //               <Image
-//                 src={product.image || "/fallback-image.jpg"} // Fallback for missing image
+//                 src={urlFor(product.image)}
 //                 alt={product.name}
-//                 layout="responsive" // Adjusted layout
-//                 width={300} // Adjust width
-//                 height={300} // Adjust height
-//                 className="rounded-md object-cover" // Improved image handling
+//                 width={500}
+//                 height={500}
+//                 className="object-cover"
 //               />
 //             </div>
-//             <h2 className="text-lg font-semibold mt-4 text-[#2A254B]">
-//               {product.name}
-//             </h2>
-//             <p className="text-gray-600 mt-2">${product.price}</p>
-//             {/* Product Details Link */}
+
+//             {/* Product Details */}
+//             <div className="flex flex-col mt-4">
+//               <h2 className="text-lg font-semibold text-[#2a254b]">{product.name}</h2>
+//               <p className="text-gray-600 mt-2">{product.description}</p>
+//               <p className="font-bold text-[#2a254b] mt-2">${product.price}</p>
+//             </div>
+
+//             {/* More Info Button */}
 //             <Link
-//               href={`/product/${product.slug}`} // Use product.slug as a string
-//               className="inline-block mt-4 px-4 py-2 text-center text-white bg-[#2A254B] rounded-lg hover:bg-blue-600 transition duration-300"
+//               href={`/product/${product.slug.current}`}
+//               className="block w-full px-4 py-2 mt-4 text-center text-white bg-[#2A254B] rounded-lg hover:bg-blue-600 transition duration-300"
 //             >
 //               More Info
 //             </Link>
@@ -466,51 +205,143 @@
 
 
 
-import Image from 'next/image';
-import { client } from '../../../sanity/lib/client'; // import your Sanity client
 
-const CategoryPage = async ({ params }: { params: { slug: string } }) => {
-  // Define your GROQ query to fetch products by category slug
-  const query = `
-    *[_type == "product" && category->slug.current == $slug] {
+
+
+
+
+
+
+
+
+
+
+
+
+import { notFound } from "next/navigation";
+import Image from "next/image";
+import { client } from "../../../sanity/lib/client";
+import imageUrlBuilder from "@sanity/image-url";
+import Link from "next/link";
+
+// Helper to build image URLs from Sanity
+const builder = imageUrlBuilder(client);
+
+function urlFor(source: any) {
+  return builder.image(source).url();
+}
+
+// Function to fetch all category slugs for generating static paths
+export async function generateStaticParams() {
+  const categories = await client.fetch(`*[_type == "category"]{ "slug": slug.current }`);
+  return categories.map((category: { slug: string }) => ({
+    slug: category.slug,
+  }));
+}
+
+// Function to fetch data for a specific category
+async function getCategoryData(slug: string) {
+  const query = `*[_type == "category" && slug.current == $slug][0] {
+    title,
+    "products": *[_type == "product" && references(^._id)] {
       _id,
       name,
-      price,
       description,
-      image {
-        asset -> {
-          _id,
-          url
-        }
-      }
+      price,
+      image,
+      slug
     }
-  `;
+  }`;
 
-  // Fetch data from Sanity
-  const products = await client.fetch(query, { slug: params.slug });
+  const data = await client.fetch(query, { slug });
+  return data;
+}
 
+// Top Navigation Bar Component
+const TopNav = () => {
   return (
-    <div>
-      <h1>Category: {params.slug}</h1>
-      <div>
-        {products.map((product: { _id: string; name: string; price: number; image: { asset: { url: string } } }) => (
-          <div key={product._id}>
-            <h2>{product.name}</h2>
-            <p>Price: ${product.price}</p>
-            {/* Display the product image using next/image */}
-            <Image 
-              src={product.image.asset.url} 
-              alt={product.name} 
-              width={500} // Adjust width as needed
-              height={300} // Adjust height as needed
-              layout="responsive" // Makes the image responsive
-            />
-            {/* Render other product details as needed */}
-          </div>
-        ))}
+    <nav className="bg-[#2A254B] p-4 shadow-lg mt-4">
+      <div className="container mx-auto flex justify-between items-center mb-2">
+        <h1 className="text-white font-clash text-[22px]">Avion</h1>
+        <div>
+          <Link href="/" className="text-white mx-4">Home</Link>
+          <Link href="/about" className="text-white mx-4">About</Link>
+          <Link href="/contact" className="text-white mx-4">Contact</Link>
+          <Link href="/products" className="text-white mx-4">Products</Link>
+        </div>
       </div>
-    </div>
+    </nav>
   );
 };
 
-export default CategoryPage;
+// Category Page Component
+export default async function CategoryPage({ params }: { params: { slug: string } }) {
+  const { slug } = await params;
+
+  if (!slug) {
+    return notFound();
+  }
+
+  // Fetch category data
+  const data = await getCategoryData(slug);
+
+  if (!data || !data.products.length) {
+    return notFound();  // Return 404 if no products are found
+  }
+
+  const { title, products } = data;
+
+  return (
+    <div>
+      {/* Top Navigation Bar */}
+      <TopNav />
+
+      <div className="container mx-auto py-8">
+        {/* Category Title - Dynamically displaying category name */}
+        <h1 className="text-4xl font-bold mb-6 text-[#2a254b]">{title} Products</h1>
+
+        {/* Product Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+          {products.map((product: any) => (
+            <div
+              key={product._id}
+              className="border p-6 rounded-lg shadow-lg transition-transform duration-300 transform hover:scale-105 flex flex-col"
+            >
+              {/* Product Image */}
+              <div className="w-full h-[300px] flex items-center justify-center overflow-hidden rounded-lg bg-gray-100">
+                <Image
+                  src={urlFor(product.image)}
+                  alt={product.name}
+                  width={400}  // Fixed width
+                  height={300} // Fixed height
+                  className="object-cover"
+                />
+              </div>
+
+              {/* Product Details */}
+              <div className="flex flex-col mt-4 flex-grow">
+                <h2 className="text-lg font-semibold text-[#2a254b]">{product.name}</h2>
+                <p className="text-gray-600 mt-2">{product.description}</p>
+                <p className="font-bold text-[#2a254b] mt-2">${product.price}</p>
+              </div>
+
+              {/* More Info Button - Fixed size and aligned */}
+              <div className="mt-auto flex justify-center">
+                <Link
+                  href={`/product/${product.slug.current}`}
+                  className="px-6 py-2 text-center text-white bg-[#2A254B] rounded-lg hover:bg-blue-600 transition duration-300 w-full max-w-xs"
+                >
+                  More Info
+                </Link>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+
+
+
