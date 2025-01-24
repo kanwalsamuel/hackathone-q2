@@ -1,118 +1,33 @@
-// // // import type { NextConfig } from "next";
-
-// // // const nextConfig: NextConfig = {
-// // //   /* config options here */
-// // // };
-
-// // // export default nextConfig;
 
 
 
-// // // // next.config.js
-// // // module.exports = {
-// // //   images: {
-// // //     domains: ['cdn.sanity.io','maps.googleapis.com'], // Add Sanity CDN to the list of allowed domains
-// // //   },
-// // // };
-
-
-
-
-// // // next.config.js
-// // module.exports = {
-// //   images: {
-// //     remotePatterns: [
-// //       {
-// //         protocol: 'https',
-// //         hostname: 'cdn.sanity.io',
-// //         port: '',
-// //         pathname: '/**',
-// //       },
-// //       {
-// //         protocol: 'https',
-// //         hostname: 'maps.googleapis.com',
-// //         port: '',
-// //         pathname: '/**',
-// //       },
-// //     ],
-// //   },
-// // };
-
-// // next.config.js
-// module.exports = {
-//   eslint: {
-//     // Disables ESLint during production builds
-//     ignoreDuringBuilds: true,
-//   },
-//   images: {
-//     remotePatterns: [
-//       {
-//         protocol: 'https',
-//         hostname: 'cdn.sanity.io',
-//         port: '',
-//         pathname: '/**',
-//       },
-//       {
-//         protocol: 'https',
-//         hostname: 'maps.googleapis.com',
-//         port: '',
-//         pathname: '/**',
-//       },
-//     ],
-// //   },
-// // };
-
-
-
-// module.exports = {
-//   eslint: {
-//     ignoreDuringBuilds: true, // Ignores ESLint during production builds
-//   },
-//   images: {
-//     remotePatterns: [
-//       {
-//         protocol: 'http',
-//         hostname: 'cdn.sanity.io',
-//         port: '',
-//         pathname: '/**',
-//       },
-//       {
-//         protocol: 'https',
-//         hostname: 'maps.googleapis.com',
-//         port: '',
-//         pathname: '/**',
-//       },
-//     ],
-//   },
-//   // typescript: {
-//   //   ignoreBuildErrors: true, // Ignores TypeScript errors during the build
-//   // },
-// };
-
-
-module.exports = {
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  reactStrictMode: true, // Enables React's strict mode for highlighting potential issues
   eslint: {
-    ignoreDuringBuilds: true, // Ignores ESLint during production builds
+    ignoreDuringBuilds: true, // Ignores ESLint errors during builds
+  },
+  typescript: {
+    ignoreBuildErrors: true, // Ignores TypeScript errors during builds
+  },
+  devIndicators: {
+    autoPrerender: false,
   },
   images: {
-    domains: ['cdn.sanity.io'], // Allow images from Sanity's CDN
-     remotePatterns: [
+    remotePatterns: [
       {
-        protocol: 'http',
-        hostname: 'cdn.sanity.io',
+        protocol: 'https',
+        hostname: 'cdn.sanity.io', // Sanity images (HTTPS only)
         pathname: '/**',
       },
       {
         protocol: 'https',
-        hostname: 'maps.googleapis.com',
-        port: '',
+        hostname: 'maps.googleapis.com', // Google Maps API images (if needed)
         pathname: '/**',
       },
     ],
   },
-    typescript: {
-      ignoreBuildErrors: true, // Ignores TypeScript errors during the build
-    },
-
-    
+ 
 };
+
+module.exports = nextConfig;

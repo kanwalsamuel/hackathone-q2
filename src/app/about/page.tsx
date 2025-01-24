@@ -16,8 +16,8 @@ export default function AboutNav() {
       <div className="w-full bg-[#2A254B] flex items-center justify-center px-6 py-2 h-[41px] relative">
         <div className="flex items-center space-x-2">
           <MdLocalShipping className="text-white" size={16} />
-          <p className="text-white text-[14px] sm:text-[16px] font-[Satoshi] font-normal leading-[22px] text-center">
-            Free delivery on all orders over £50
+          <p className="text-white text-[14px] sm:text-[16px] font-[Satoshi] font-normal leading-[22px] text-center animate-moveSlow">
+            ✨ Free Delivery on Orders Over €500! ✨
           </p>
         </div>
         <button
