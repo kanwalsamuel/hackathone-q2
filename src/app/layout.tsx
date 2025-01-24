@@ -27,7 +27,7 @@ export default function RootLayout({
       <head>
         <meta charSet="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <title>My Next.js Application</title>
+        <title>My Furnio Application</title>
       </head>
       <body>
         {loading ? (
