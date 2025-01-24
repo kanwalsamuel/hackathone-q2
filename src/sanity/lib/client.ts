@@ -8,3 +8,4 @@ import { createClient } from 'next-sanity';
   apiVersion: '2025-01-10', // use the date when you first set up your Sanity project
   useCdn: true,
 });
+ 
