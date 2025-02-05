@@ -34,13 +34,24 @@ const Hero = () => {
         </div>
         {/* Image Section for Medium and Larger Screens */}
         <div className="relative flex-1 md:flex hidden justify-center items-center">
-          <Image
+          {/* <Image
             src="/images/Right Image.png"
             alt="Chair"
             width={520}
             height={584}
             className="w-[80%] lg:w-[520px] h-auto"
-          />
+          /> */}
+
+
+<Image
+  src="/images/Right Image.png"
+  alt="Chair"
+  width={520}
+  height={584}
+  quality={75} // Optimize quality
+  priority
+  className="w-[80%] lg:w-[520px] h-auto"
+/>
         </div>
       </div>
     </div>

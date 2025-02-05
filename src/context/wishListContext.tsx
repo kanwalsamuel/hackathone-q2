@@ -9,7 +9,7 @@ interface WishlistItem {
   price: number;
   image: string;
 }
-
+ 
 // Define Context Type
 interface WishlistContextType {
   wishlistItems: WishlistItem[];

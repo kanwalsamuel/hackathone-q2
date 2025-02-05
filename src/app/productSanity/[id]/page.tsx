@@ -3,14 +3,15 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { useParams } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 import { client } from "../../../sanity/lib/client";
 import Image from "next/image";
 import { useCart } from "../../../context/cartContext";
 import { useWishlist } from "../../../context/wishListContext";
 import TopNav from "@/app/components/nav";
 import { FaHeart } from "react-icons/fa";
-import Head from "next/head"; // For SEO improvements
+import Head from "next/head";
+import Reviews from "@/app/components/review";
 
 type Product = {
   _id: string;
@@ -27,6 +28,11 @@ type Product = {
       url: string;
     };
   };
+  category: {
+    name: string;
+  };
+  tags: string[];
+  features: string[];
   deliveryTime: string;
   returnPolicy: string;
   quantity: number;
@@ -40,19 +46,14 @@ type Review = {
 
 const ProductDetail: React.FC = () => {
   const { id } = useParams();
-  const productId = Array.isArray(id) ? id[0] : id; // Ensure id is a string
+  const router = useRouter();
+  const productId = Array.isArray(id) ? id[0] : id;
   const [product, setProduct] = useState<Product | null>(null);
   const [reviews, setReviews] = useState<Review[]>([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null); // Track error message
-  const {
-    addToCart,
-    removeFromCart,
-    updateQuantity,
-    cartItems = [],
-  } = useCart();
-  const { addToWishlist, removeFromWishlist, isProductInWishlist } =
-    useWishlist();
+  const [error, setError] = useState<string | null>(null);
+  const { addToCart, removeFromCart, updateQuantity, cartItems = [] } = useCart();
+  const { addToWishlist, removeFromWishlist, isProductInWishlist } = useWishlist();
 
   const productInCart = cartItems.find(
     (item) => item.product._id === productId
@@ -60,12 +61,10 @@ const ProductDetail: React.FC = () => {
   const isProductInCart = Boolean(productInCart);
   const isInWishlist = isProductInWishlist(productId);
 
-
-
   useEffect(() => {
     const fetchProduct = async () => {
       setLoading(true);
-      setError(null); // Reset error message
+      setError(null);
 
       try {
         const productQuery = `*[_type == "product" && _id == $id] {
@@ -74,7 +73,10 @@ const ProductDetail: React.FC = () => {
           price,
           description,
           dimensions { height, width, depth },
-          image { asset -> { url }} ,
+          image { asset -> { url }},
+          category -> { name },
+          tags,
+          features,
           deliveryTime,
           returnPolicy,
           quantity,
@@ -167,32 +169,6 @@ const ProductDetail: React.FC = () => {
         <meta property="og:description" content={product.description || "No description available"} />
         <meta property="og:image" content={product.image.asset.url} />
         <meta property="og:type" content="product" />
-        {/* Adding Structured Data for Product */}
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "Product",
-              name: product.name,
-              description: product.description,
-              image: product.image.asset.url,
-              sku: product._id,
-              offers: {
-                "@type": "Offer",
-                priceCurrency: "EUR",
-                price: product.price,
-                availability: product.quantity > 0 ? "InStock" : "OutOfStock",
-                url: window.location.href, // The product page URL
-              },
-              aggregateRating: {
-                "@type": "AggregateRating",
-                ratingValue: averageRating,
-                reviewCount: reviews.length,
-              },
-            }),
-          }}
-        />
       </Head>
 
       <div className="product-detail mx-auto p-4 sm:p-6 w-full bg-gradient-to-r from-[#F3F4F6] to-[#FFFFFF]">
@@ -202,26 +178,52 @@ const ProductDetail: React.FC = () => {
 
         <TopNav />
 
+        {/* Back Link */}
+        <div className="mb-8">
+          <button
+            onClick={() => router.push("/products")}
+            className="text-[#2a254b] text-sm sm:text-lg font-satoshi"
+          >
+            &larr; Back to Products
+          </button>
+        </div>
+
+         {/* Heading with description */}
+  <div className="heading-section text-center mt-8 mb-6 sm:mt-12 sm:mb-12">
+    <h2 className="text-2xl sm:text-3xl font-clash text-[#2A254B]">
+      Every Piece Tells a Story &ndash; Explore Our Collection Crafted with Passion and Purpose
+    </h2>
+    <p className="text-sm sm:text-lg text-gray-600 mt-4">
+      Each product in our collection is more than just an item; it&apos;s a testament to the craftsmanship and care that goes into its creation. With every design, we strive to bring you unique pieces that not only add beauty to your space but also tell a story of passion, dedication, and purpose. Discover items that are as meaningful as they are beautiful, thoughtfully made to enrich your daily life.
+    </p>
+  </div>
+
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 mt-8 sm:mt-12">
-          {/* Product Image */}
-          <div className="product-image flex justify-center rounded-lg shadow-xl overflow-hidden bg-white animate-slideIn hover:scale-105 transition-all duration-300 h-full">
-            <Image
-              src={product.image.asset.url || "/fallback-image.jpg"}
-              alt={product.name}
-              width={350}
-              height={300}
-              objectFit="contain"
-              priority
-              className="rounded-lg transition-all duration-300"
-            />
+          {/* Left Side (Product Image) */}
+          <div className="product-image flex justify-center items-center bg-white overflow-hidden rounded-lg shadow-lg h-full w-full border-b-4">
+            <div className="w-full h-full flex justify-center items-center bg-gray-100">
+              <Image
+                src={product.image.asset.url}
+                alt={product.name}
+                width={320}
+                height={320}
+                className="rounded-md object-cover w-full h-full group-hover:scale-105 transition-all duration-300"
+                loading="lazy"
+              />
+            </div>
           </div>
 
-          {/* Product Info */}
-          <div className="product-info bg-white rounded-lg shadow-xl p-4 sm:p-6 space-y-4 sm:space-y-6 relative h-full flex flex-col justify-between">
+          {/* Right Side (Product Description and Details) */}
+          <div className="product-info bg-white rounded-lg shadow-xl p-4 sm:p-6 space-y-4 sm:space-y-6 relative h-full flex flex-col justify-between border-b-4 ">
             <div>
               <h1 className="text-xl sm:text-2xl font-clash text-[#2a254b]">
                 {product.name}
               </h1>
+              <div className="product-category mt-2">
+                <h2 className="text-sm sm:text-lg font-satoshi text-[#2a254b]">
+                  Category: {product.category?.name || "Uncategorized"}
+                </h2>
+              </div>
               <div className="product-description mt-4">
                 <h2 className="text-lg sm:text-xl font-satoshi text-[#2a254b]">
                   Description
@@ -250,6 +252,15 @@ const ProductDetail: React.FC = () => {
                 <p className="mt-2 text-xs sm:text-sm text-gray-600">
                   {reviews.length} reviews
                 </p>
+              </div>
+
+              <div className="product-features mt-4">
+                <h2 className="text-sm sm:text-lg font-satoshi text-[#2a254b]">Features</h2>
+                <ul className="list-disc pl-5 text-xs sm:text-sm text-gray-600">
+                  {product.features?.map((feature, index) => (
+                    <li key={index}>{feature}</li>
+                  ))}
+                </ul>
               </div>
 
               <div className="product-delivery mt-4">
@@ -329,11 +340,21 @@ const ProductDetail: React.FC = () => {
                 aria-label={isInWishlist ? "Remove from wishlist" : "Add to wishlist"}
                 className="w-full sm:w-52 px-4 py-2 bg-[#2a254b] text-white font-satoshi transition-all duration-300 rounded-full flex items-center justify-center gap-2 text-[14px]"
               >
-                <FaHeart />
-                {isInWishlist ? "Remove from Wishlist" : "Add to Wishlist"}
+                <FaHeart color={isInWishlist ? "#e74c3c" : "#fff"} />
+                <span>{isInWishlist ? "Remove from Wishlist" : "Add to Wishlist"}</span>
               </button>
             </div>
           </div>
+        </div>
+
+        <br /> {/* Add the <br /> below containers */}
+        <div className="border-t-4 border-[#FF5722] w-full max-w-[1440px] mx-auto"></div> {/* Border below the containers */}
+        <br />
+        <br />
+
+        {/* Review Section */}
+        <div className="pt-6 shadow-2xl">
+          <Reviews reviews={reviews} productId={productId} />
         </div>
       </div>
     </>

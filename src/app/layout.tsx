@@ -1,26 +1,43 @@
 
 
+// import "./globals.css";
+// import Footer from "./components/footer";
+// import Providers from "../app/components/providers"; // Separate client logic
 
-"use client";
+// export default function RootLayout({ children }: { children: React.ReactNode }) {
+//   return (
+//     <html lang="en">
+//       <head>
+//         <meta charSet="UTF-8" />
+//         <meta name="viewport" content="width=device-width, initial-scale=1" />
+//         <title>My Furnio Application</title>
+//       </head>
+//       <body>
+//         <Providers>
+//           <div className="mx-auto max-w-[1440px]">
+//             {children}
+            
+//             <Footer />
+//           </div>
+//         </Providers>
+//       </body>
+//     </html>
+//   );
+// }
+
+
+"use client"; // Required for using hooks
 
 import "./globals.css";
 import Footer from "./components/footer";
-import { CartProvider } from "../context/cartContext";
-import { WishlistProvider } from "@/context/wishListContext";
-import { useState, useEffect } from "react";
-import LoadingAnimation from "./components/loadingAnimation"; // Import the LoadingAnimation component
+import Providers from "../app/components/providers";
+import { usePathname } from "next/navigation"; // Import usePathname
 
-// Import local fonts
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+  const pathname = usePathname(); // Get current path
 
-export default function RootLayout({
-  children,
-}: Readonly<{ children: React.ReactNode }>) {
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    const timer = setTimeout(() => setLoading(false), 3000); // Adjust loading duration
-    return () => clearTimeout(timer);
-  }, []);
+  // Check if it's an authentication page
+  const isAuthPage = pathname.startsWith("/auth");
 
   return (
     <html lang="en">
@@ -30,18 +47,14 @@ export default function RootLayout({
         <title>My Furnio Application</title>
       </head>
       <body>
-        {loading ? (
-          <LoadingAnimation /> // Only show loading animation when loading
-        ) : (
-          <CartProvider>
-            <WishlistProvider>
-              <div className="mx-auto max-w-[1440px]">
-                {children}
-                <Footer />
-              </div>
-            </WishlistProvider>
-          </CartProvider>
-        )}
+        <Providers>
+          <div className="mx-auto max-w-[1440px]">
+            {children}
+
+            {/* Hide footer on authentication pages */}
+            {!isAuthPage && <Footer />}
+          </div>
+        </Providers>
       </body>
     </html>
   );

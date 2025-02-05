@@ -1,33 +1,66 @@
 
 
+// {
+//   "compilerOptions": {
+//     "target": "ES2017",
+//     "lib": ["dom", "dom.iterable", "esnext"],
+//     "allowJs": true,
+//     "skipLibCheck": true,
+//     "allowSyntheticDefaultImports": true,
+//     "strict": false,
+//     "noEmit": true,
+//     "esModuleInterop": true,
+//     "module": "esnext",
+//     "moduleResolution": "bundler",
+//     "resolveJsonModule": true,
+//     "isolatedModules": true,
+//     "jsx": "preserve",
+//     "incremental": true,
+//     "noImplicitAny": false, // Allows variables to have an 'any' type
+//     "strictNullChecks": false, // Disable strict checking of null and undefined
+//     "noImplicitThis": false, // Disable strict 'this' type checks
+//     "plugins": [
+//       {
+//         "name": "next"
+//       }
+//     ],
+//     "paths": {
+//       "@/*": ["./src/*"]
+//     }
+//   },
+//   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
+//   "exclude": ["node_modules"]
+// }
+
+
 {
   "compilerOptions": {
-    "target": "ES2017",
-    "lib": ["dom", "dom.iterable", "esnext"],
-    "allowJs": true,
-    "skipLibCheck": true,
-    "allowSyntheticDefaultImports": true,
-    "strict": false,
-    "noEmit": true,
-    "esModuleInterop": true,
-    "module": "esnext",
-    "moduleResolution": "bundler",
-    "resolveJsonModule": true,
-    "isolatedModules": true,
-    "jsx": "preserve",
-    "incremental": true,
-    "noImplicitAny": false, // Allows variables to have an 'any' type
-    "strictNullChecks": false, // Disable strict checking of null and undefined
-    "noImplicitThis": false, // Disable strict 'this' type checks
+    "target": "ES2021", // Good for modern JavaScript compatibility
+    "lib": ["dom", "dom.iterable", "esnext"], // Includes modern browser and ES features
+    "allowJs": true, // Allow JavaScript files alongside TypeScript
+    "skipLibCheck": true, // Skip type checking of declaration files for faster builds
+    "allowSyntheticDefaultImports": true, // Allow default imports for modules without default exports
+    "strict": true, // Enable all strict type-checking options for better safety
+    "noImplicitAny": true, // Prevent implicit 'any' types
+    "strictNullChecks": true, // Ensure null/undefined are explicitly handled
+    "noImplicitThis": true, // Catch errors with 'this' context
+    "noEmit": true, // Prevent emitting JavaScript files
+    "esModuleInterop": true, // Compatibility for CommonJS modules
+    "module": "esnext", // Use the latest module standard
+    "moduleResolution": "bundler", // Required for Next.js 13+ with app directory
+    "resolveJsonModule": true, // Allow importing JSON files
+    "isolatedModules": true, // Ensure TypeScript files are treated as independent
+    "jsx": "preserve", // Let Next.js handle JSX
+    "incremental": true, // Enable faster builds by caching previous results
+    "paths": {
+      "@/*": ["./src/*"] // Simplifies imports with '@'
+    },
     "plugins": [
       {
-        "name": "next"
+        "name": "next" // Next.js-specific TypeScript plugin
       }
-    ],
-    "paths": {
-      "@/*": ["./src/*"]
-    }
+    ]
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
-  "exclude": ["node_modules"]
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"], // Include necessary files
+  "exclude": ["node_modules"] // Exclude unnecessary files
 }

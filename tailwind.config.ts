@@ -1,9 +1,4 @@
-
-
-
-
 import type { Config } from "tailwindcss";
-import typography from '@tailwindcss/typography'; // ES Module import
 
 export default {
   content: [
@@ -13,12 +8,6 @@ export default {
   ],
   theme: {
     extend: {
-      spacing: {
-        26: "6.5rem",
-        72: "18rem",
-        84: "21rem",
-        96: "24rem",
-      },
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
@@ -37,97 +26,24 @@ export default {
       borderRadius: {
         "4xl": "2rem",
       },
-      typography: {
-        DEFAULT: {
-          css: {
-            color: '#333',
-            fontFamily: 'Satoshi, sans-serif',
-            h1: {
-              fontFamily: 'Clash Display, sans-serif',
-              fontWeight: 'bold',
-              fontSize: '2.25rem',
-              lineHeight: '2.5rem',
-              color: '#4e4d93',
-            },
-            h2: {
-              fontFamily: 'Clash Display, sans-serif',
-              fontWeight: 'bold',
-              fontSize: '1.875rem',
-              lineHeight: '2.25rem',
-              color: '#4e4d93',
-            },
-            h3: {
-              fontFamily: 'Clash Display, sans-serif',
-              fontWeight: 'bold',
-              fontSize: '1.5rem',
-              lineHeight: '2rem',
-              color: '#4e4d93',
-            },
-            h4: {
-              fontFamily: 'Clash Display, sans-serif',
-              fontWeight: 'bold',
-              fontSize: '1.25rem',
-              lineHeight: '1.75rem',
-              color: '#4e4d93',
-            },
-            p: {
-              fontFamily: 'Satoshi, sans-serif',
-              lineHeight: '1.75rem',
-              marginBottom: '1rem',
-            },
-            a: {
-              color: '#FF6F61',
-              textDecoration: 'underline',
-              transition: 'color 0.3s ease',
-            },
-            'a:hover': {
-              color: '#D94A39',
-            },
-            ul: {
-              listStyleType: 'disc',
-              paddingLeft: '1.5rem',
-              marginBottom: '1rem',
-            },
-            ol: {
-              listStyleType: 'decimal',
-              paddingLeft: '1.5rem',
-              marginBottom: '1rem',
-            },
-            blockquote: {
-              borderLeftWidth: '4px',
-              borderLeftColor: '#4e4d93',
-              paddingLeft: '1rem',
-              fontStyle: 'italic',
-              color: '#666',
-              marginBottom: '1.5rem',
-            },
-          },
-        },
-      },
       animation: {
-        fadeIn: 'fadeIn 1s ease-out',
-        slideIn: 'slideIn 0.5s ease-out',
-        bounce: 'bounce 1s infinite',
-        'spin-slow': 'spin 3s linear infinite',
-        moveSlow: 'moveSlow 5s ease-in-out infinite', // New slow-moving animation
+        "ball-zoom-fast": "ball-zoom-fast 0.8s ease-in-out infinite",
+        "shutter-down": "shutterDown 1s ease-out forwards",
       },
       keyframes: {
-        fadeIn: {
-          '0%': { opacity: 0 },
-          '100%': { opacity: 1 },
+        "ball-zoom-fast": {
+          "0%, 100%": { transform: "scale(1)", opacity: "1" },
+          "50%": { transform: "scale(1.4)", opacity: "0.8" },
         },
-        slideIn: {
-          '0%': { transform: 'translateX(-100%)' },
-          '100%': { transform: 'translateX(0)' },
-        },
-        bounce: {
-          '0%, 100%': { transform: 'translateY(0)' },
-          '50%': { transform: 'translateY(-10px)' },
-        },
-        moveSlow: {
-          '0%': { transform: 'translateX(-20%)' }, // Start from left
-          '50%': { transform: 'translateX(5%)' }, // Move to the middle
-          '100%': { transform: 'translateX(-5%)' }, // End at right
+        shutterDown: {
+          "0%": {
+            transform: "translateY(-100%)",
+            opacity: "0",
+          },
+          "100%": {
+            transform: "translateY(0)",
+            opacity: "1",
+          },
         },
       },
     },
@@ -135,7 +51,5 @@ export default {
       "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
     },
   },
-  plugins: [
-    typography, // Use the imported typography plugin here
-  ],
+  plugins: [],
 } satisfies Config;

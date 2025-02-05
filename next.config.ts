@@ -1,7 +1,4 @@
-
-
-
-/** @type {import('next').NextConfig} */
+ /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true, // Enables React's strict mode for highlighting potential issues
   eslint: {
@@ -14,6 +11,7 @@ const nextConfig = {
     autoPrerender: false,
   },
   images: {
+    disableStaticImages: true, // Disables static image imports
     remotePatterns: [
       {
         protocol: 'https',
@@ -27,7 +25,7 @@ const nextConfig = {
       },
     ],
   },
- 
+
 };
 
 module.exports = nextConfig;

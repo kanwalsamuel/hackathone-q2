@@ -1,5 +1,3 @@
-
-
 "use client";
 import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 
@@ -24,6 +22,7 @@ type CartContextType = {
   addToCart: (product: Product) => void;
   removeFromCart: (productId: string) => void;
   updateQuantity: (productId: string, quantity: number) => void;
+  clearCart: () => void;  // Add the clearCart function
 };
 
 const CartContext = createContext<CartContextType | undefined>(undefined);
@@ -80,8 +79,13 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
     );
   };
 
+  // Function to clear the cart
+  const clearCart = () => {
+    setCartItems([]);
+  };
+
   return (
-    <CartContext.Provider value={{ cartItems, addToCart, removeFromCart, updateQuantity }}>
+    <CartContext.Provider value={{ cartItems, addToCart, removeFromCart, updateQuantity, clearCart }}>
       {children}
     </CartContext.Provider>
   );
@@ -94,4 +98,3 @@ export const useCart = (): CartContextType => {
   }
   return context;
 };
-

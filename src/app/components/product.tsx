@@ -8,6 +8,8 @@ import Image from 'next/image'
 import React from 'react'
 import { useRouter } from 'next/navigation';
 
+
+
 const Product = () => {
   // Initialize the router
   const router = useRouter();
