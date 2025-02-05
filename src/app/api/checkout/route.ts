@@ -1,6 +1,18 @@
 import Stripe from 'stripe';
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
+// Ensure the environment variables are set correctly
+const stripeSecretKey = process.env.STRIPE_SECRET_KEY;
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL;
+
+if (!stripeSecretKey) {
+  throw new Error('STRIPE_SECRET_KEY is not defined in the environment variables.');
+}
+
+if (!siteUrl) {
+  throw new Error('NEXT_PUBLIC_SITE_URL is not defined in the environment variables.');
+}
+
+const stripe = new Stripe(stripeSecretKey);
 
 export async function POST(req: Request) {
   try {
@@ -25,8 +37,8 @@ export async function POST(req: Request) {
       payment_method_types: ['card'],
       line_items: lineItems,
       mode: 'payment',
-      success_url: `${process.env.NEXT_PUBLIC_SITE_URL}/success`,
-      cancel_url: `${process.env.NEXT_PUBLIC_SITE_URL}/cancel`,
+      success_url: `${siteUrl}/success`,
+      cancel_url: `${siteUrl}/cancel`,
     });
 
     return new Response(JSON.stringify({ url: session.url }), { status: 200 });
@@ -35,5 +47,3 @@ export async function POST(req: Request) {
     return new Response(JSON.stringify({ error: 'Internal Server Error' }), { status: 500 });
   }
 }
-
-
