@@ -1,3 +1,5 @@
+
+
 import Stripe from 'stripe';
 
 // Ensure the environment variables are set correctly
@@ -27,7 +29,7 @@ export async function POST(req: Request) {
           description: item.product.description,
           images: [item.product.image.asset.url], // Ensure correct image URL
         },
-        unit_amount: item.product.price * 100, // Amount is in cents
+        unit_amount: Math.round(item.product.price * 100), // Amount is in cents
       },
       quantity: item.quantity,
     }));
@@ -44,6 +46,8 @@ export async function POST(req: Request) {
     return new Response(JSON.stringify({ url: session.url }), { status: 200 });
   } catch (error) {
     console.error('Stripe Checkout Error:', error);
-    return new Response(JSON.stringify({ error: 'Internal Server Error' }), { status: 500 });
+    return new Response(JSON.stringify({ error: error.message || 'Internal Server Error' }), { status: 500 });
   }
 }
+
+
