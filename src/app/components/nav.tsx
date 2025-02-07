@@ -1,7 +1,6 @@
 
 
 
-
 "use client";
 
 import { useState } from "react";
@@ -49,33 +48,45 @@ export default function TopNav() {
   }
 
   return (
-    <div className="w-full bg-white flex flex-col mx-auto relative mt-4 ">
+    <div className="w-full bg-white flex flex-col mx-auto relative mt-4">
       {/* Top Section */}
       <div className="flex justify-end px-4 py-2 animate-shutter-down">
         {isSignedIn ? (
           <div className="flex items-center space-x-4">
             <span className="text-blue-800">Welcome, {user.firstName}</span>
             <SignOutButton>
-              <button className="text-black">Sign Out</button>
+              <button
+                className="text-black"
+                onClick={() => router.push("/auth/sign-in")}
+              >
+                Sign Out
+              </button>
             </SignOutButton>
           </div>
         ) : (
           <div className="flex space-x-4">
-            <Link href="/auth/sign-in" className="text-black">Sign In</Link>
-            <Link href="/auth/sign-up" className="text-black">Sign Up</Link>
+            <Link href="/auth/sign-in" className="text-black">
+              Sign In
+            </Link>
+            <Link href="/auth/sign-up" className="text-black">
+              Sign Up
+            </Link>
           </div>
         )}
       </div>
 
       {/* Navbar */}
-      <div className=" animate-shutter-down w-full flex items-center justify-between px-4 md:px-6 lg:px-8 py-4 border-b-2 border-gray-200">
+      <div className="animate-shutter-down w-full flex items-center justify-between px-4 md:px-6 lg:px-8 py-4 border-b-2 border-gray-200">
         {/* Hamburger Menu - Visible on sm and md (below 768px) */}
         <button className="block md:hidden text-black" onClick={toggleMenu}>
           <FaBars size={24} />
         </button>
 
         {/* Logo */}
-        <Link href="/" className="animate-shutter-down text-[#22202E] font-clash text-[20px] md:text-[24px] leading-[30px] text-center">
+        <Link
+          href="/"
+          className="animate-shutter-down text-[#22202E] font-clash text-[20px] md:text-[24px] leading-[30px] text-center"
+        >
           FURNIO
         </Link>
 
@@ -109,7 +120,11 @@ export default function TopNav() {
       <div className="hidden md:flex w-full justify-center mt-4 text-[18px] hover:text-blue-950 font-clash">
         <div className="flex gap-4 animate-shutter-down">
           {navLinks.map((link, index) => (
-            <Link key={index} href={link.href} className="text-gray-700 hover:text-black transition">
+            <Link
+              key={index}
+              href={link.href}
+              className="text-gray-700 hover:text-black transition"
+            >
               {link.label}
             </Link>
           ))}
@@ -143,7 +158,12 @@ export default function TopNav() {
       </div>
 
       {/* Overlay for Mobile Menu */}
-      {menuOpen && <div className="fixed inset-0 bg-black opacity-50 z-40" onClick={closeMenu}></div>}
+      {menuOpen && (
+        <div
+          className="fixed inset-0 bg-black opacity-50 z-40"
+          onClick={closeMenu}
+        ></div>
+      )}
     </div>
   );
 }

@@ -1,7 +1,9 @@
 
 
+
+
 "use client";
-import { SignIn } from "@clerk/nextjs";
+import { SignIn, SignedIn, SignedOut } from "@clerk/nextjs";
 import Link from "next/link";
 import { motion } from "framer-motion"; // Import Framer Motion
 import { useState, useEffect } from "react";
@@ -33,23 +35,30 @@ export default function SignInPage() {
         className="absolute top-0 right-0 h-full w-1/2 bg-blue-950"
       />
 
-      {/* Sign-In Form Appears After Doors Open */}
-      {doorsOpen && (
-        <motion.div
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ delay: 1, duration: 0.8, ease: "easeOut" }}
-          className="shadow-2xl bg-white p-6 rounded-lg w-full max-w-md z-10"
-        >
-          <SignIn />
-          <Link
-            href="/auth/reset-password"
-            className="mt-10 text-blue-600 text-center block"
+      {/* Check if user is Signed Out, then show Sign-In Form */}
+      <SignedOut>
+        {doorsOpen && (
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 1, duration: 0.8, ease: "easeOut" }}
+            className="shadow-2xl bg-white p-6 rounded-lg w-full max-w-md z-10"
           >
-            Forgot Password?
-          </Link>
-        </motion.div>
-      )}
+            <SignIn />
+            <Link
+              href="/auth/reset-password"
+              className="mt-10 text-blue-600 text-center block"
+            >
+              Forgot Password?
+            </Link>
+          </motion.div>
+        )}
+      </SignedOut>
+
+      {/* If user is already signed in, show a message or redirect */}
+      <SignedIn>
+        <p className="text-xl font-semibold">You are already signed in.</p>
+      </SignedIn>
     </div>
   );
 }
